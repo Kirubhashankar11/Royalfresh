@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Royal Fresh – Yogurt Subscription</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <style>
@@ -19,11 +22,13 @@
       --shadow-md: 0 4px 20px rgba(98, 69, 28, 0.12);
       --shadow-lg: 0 8px 30px rgba(98, 69, 28, 0.15);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--cream);
@@ -43,11 +48,13 @@
       padding: 1rem 4vw;
       transition: all 0.3s ease;
     }
+
     header.scrolled {
       padding: 0.7rem 4vw;
       background: rgba(255, 249, 240, 0.98);
       backdrop-filter: blur(10px);
     }
+
     .header-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -57,6 +64,7 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -66,14 +74,17 @@
       font-size: 1.6rem;
       font-family: 'Playfair Display', serif;
     }
+
     .logo img {
       height: 42px;
       margin-right: 12px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
+
     .logo-text {
       display: inline;
     }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -81,6 +92,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .nav-links a {
       text-decoration: none;
       color: var(--dark-brown);
@@ -90,9 +102,11 @@
       padding: 0.5rem 0;
       position: relative;
     }
+
     .nav-links a:hover {
       color: var(--primary-brown);
     }
+
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -103,15 +117,18 @@
       background-color: var(--primary-brown);
       transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
     .nav-links a:hover::after {
       width: 100%;
     }
+
     /* Dropdown Styles - Refined for No Layout Shift */
     .dropdown {
       position: relative;
       display: inline-flex;
       align-items: center;
     }
+
     .dropdown-toggle {
       text-decoration: none;
       color: var(--dark-brown);
@@ -124,9 +141,11 @@
       line-height: 1.2;
       white-space: nowrap;
     }
+
     .dropdown-toggle:hover {
       color: var(--primary-brown);
     }
+
     .dropdown-toggle::after {
       content: '';
       position: absolute;
@@ -137,9 +156,11 @@
       background-color: var(--primary-brown);
       transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
     .dropdown-toggle:hover::after {
       width: 100%;
     }
+
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -158,11 +179,13 @@
       overflow: hidden;
       pointer-events: none;
     }
+
     .dropdown:hover .dropdown-menu {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
     }
+
     .dropdown-menu a {
       display: block;
       padding: 0.8rem 1.2rem;
@@ -173,11 +196,13 @@
       transition: all 0.3s;
       white-space: nowrap;
     }
+
     .dropdown-menu a:hover {
       background: var(--light-brown);
       color: var(--primary-brown);
       padding-left: 1.5rem;
     }
+
     .search-container {
       flex: 1;
       min-width: 240px;
@@ -185,6 +210,7 @@
       margin: 0 1.5rem;
       position: relative;
     }
+
     #searchInput {
       width: 100%;
       padding: 0.8rem 1.2rem 0.8rem 3rem;
@@ -196,10 +222,12 @@
       box-shadow: var(--shadow-sm);
       background: white;
     }
+
     #searchInput:focus {
       border-color: var(--gold);
       box-shadow: 0 4px 15px rgba(200, 169, 126, 0.2);
     }
+
     .search-icon {
       position: absolute;
       left: 1.2rem;
@@ -434,7 +462,7 @@
       height: 80px;
       object-fit: contain;
       margin-bottom: 1rem;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
     }
 
     .yogurt-option label {
@@ -723,46 +751,48 @@
       font-size: 0.9rem;
     }
 
-  .subscription-details {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background: var(--light-brown);
-  border-radius: 10px;
-  border-left: 4px solid var(--primary-brown);
-}
-.subscription-details h4 {
-  color: var(--primary-brown);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
+    .subscription-details {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--light-brown);
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-brown);
+    }
 
- .subscription-details p {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
-}
+    .subscription-details h4 {
+      color: var(--primary-brown);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
 
-.subscription-details p:last-child {
-  margin-bottom: 0;
-}
+    .subscription-details p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
 
-#monthsSelect {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--light-brown);
-  border-radius: 5px;
-  font-size: 0.9rem;
-  background: white;
-  outline: none;
-  transition: all 0.3s;
-  margin-top: 0.25rem;
-  display: block;
-}
+    .subscription-details p:last-child {
+      margin-bottom: 0;
+    }
 
-#monthsSelect:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 2px rgba(200, 169, 126, 0.2);
-}
+    #monthsSelect {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--light-brown);
+      border-radius: 5px;
+      font-size: 0.9rem;
+      background: white;
+      outline: none;
+      transition: all 0.3s;
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    #monthsSelect:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(200, 169, 126, 0.2);
+    }
+
     .price-box {
       background: var(--primary-brown);
       color: white;
@@ -833,6 +863,7 @@
         grid-template-columns: 1fr;
         gap: 2rem;
       }
+
       .order-summary {
         order: 2;
         position: static;
@@ -843,34 +874,43 @@
       .yogurt-options {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .unit-options {
         flex-direction: column;
         align-items: center;
       }
+
       .days-grid {
         grid-template-columns: 1fr;
       }
+
       .header-container {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
+
       .logo-text {
         display: none;
       }
+
       .nav-links {
         display: none;
       }
+
       .search-container {
         display: none;
       }
+
       .mobile-menu-btn {
         display: block;
       }
+
       .day-checkbox {
         gap: 0.5rem;
         padding: 0.5rem;
       }
+
       .per-day-row {
         flex-wrap: wrap;
       }
@@ -880,19 +920,24 @@
       .step {
         padding: 1.5rem;
       }
+
       .yogurt-options {
         grid-template-columns: 1fr;
       }
+
       .unit-options {
         gap: 1rem;
       }
+
       .day-checkbox {
         flex-wrap: wrap;
         gap: 0.5rem;
       }
+
       .per-day-select {
         min-width: 50px;
       }
+
       .time-options-per-day {
         margin-left: 1.25rem;
       }
@@ -903,12 +948,14 @@
       background: var(--light-brown);
       border-color: var(--gold);
     }
-    .time-radio input[type="radio"]:checked + span {
+
+    .time-radio input[type="radio"]:checked+span {
       color: var(--primary-brown);
       font-weight: 600;
     }
   </style>
 </head>
+
 <body>
   <!-- === Premium Header === -->
   <header id="mainHeader">
@@ -922,13 +969,13 @@
         <input type="text" id="searchInput" placeholder="Search products..." />
       </div>
       <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
+        <a href="/home">Home</a>
+        <a href="/all-products">Products</a>
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle">Subscription</a>
+          <a href="/subscription" class="dropdown-toggle">Subscription</a>
           <div class="dropdown-menu">
-            <a href="milksubscription.html">Milk Subscription</a>
-            <a href="yogurtsubscription.html">Yogurt Subscription</a>
+            <a href="/milk-subscription">Milk Subscription</a>
+            <a href="/yogurt-subscription">Yogurt Subscription</a>
           </div>
         </div>
         <a href="#features">Features</a>
@@ -936,6 +983,10 @@
         <a href="#bags">Premium Bags</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="cart-header" href="/cart" aria-label="Open cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
       </button>
@@ -953,13 +1004,13 @@
       </button>
     </div>
     <ul class="side-nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/all-products">Products</a></li>
       <li class="dropdown-mobile">
-        <a href="#" class="dropdown-toggle">Subscription <i class="fas fa-chevron-down"></i></a>
+        <a href="/subscription" class="dropdown-toggle">Subscription <i class="fas fa-chevron-down"></i></a>
         <ul class="dropdown-menu-mobile">
-          <li><a href="milksubscription.html">Milk Subscription</a></li>
-          <li><a href="yogurtsubscription.html">Yogurt Subscription</a></li>
+          <li><a href="/milksub-scription">Milk Subscription</a></li>
+          <li><a href="/yogurt-subscription">Yogurt Subscription</a></li>
         </ul>
       </li>
       <li><a href="#features">Features</a></li>
@@ -968,6 +1019,10 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+  <a class="cart-header" href="/cart" aria-label="Open cart">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </a>
 
   <!-- === Subscription Content === -->
   <div class="subscription-container">
@@ -1018,7 +1073,7 @@
           </label>
         </div>
       </div>
-      
+
       <!-- Step 3: Unit Size -->
       <div class="step">
         <div class="step-header">
@@ -1043,7 +1098,7 @@
       </div>
 
       <!-- Step 4: Delivery Schedule -->
-     <div class="step" id="deliveryStep" style="display: none;">
+      <div class="step" id="deliveryStep" style="display: none;">
         <div class="step-header">
           <div class="step-number">4</div>
           <h3 class="step-title">Select Delivery Schedule</h3>
@@ -1061,19 +1116,19 @@
           <div class="schedule-title">Delivery Days:</div>
           <div class="days-grid">
             <label class="day-checkbox">
-  <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1;">
-    <input type="checkbox" name="days[]" value="Monday">
-    <span class="day-name">Monday</span>
-    <div class="time-slot-container"></div>
-  </div>
-  <div class="per-day-row">
-    <select class="per-day-select"></select>
-    <!-- <span class="bottles-text"> bottles</span> -->
-  </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1;">
+                <input type="checkbox" name="days[]" value="Monday">
+                <span class="day-name">Monday</span>
+                <div class="time-slot-container"></div>
+              </div>
+              <div class="per-day-row">
+                <select class="per-day-select"></select>
+                <!-- <span class="bottles-text"> bottles</span> -->
+              </div>
 
-  <!-- Keep empty, will be filled dynamically -->
-  <div class="time-options-per-day"></div>
-</label>
+              <!-- Keep empty, will be filled dynamically -->
+              <div class="time-options-per-day"></div>
+            </label>
 
             <label class="day-checkbox">
               <div style="display: flex; align-items: center; gap: 0.75rem; flex: 1;">
@@ -1110,7 +1165,7 @@
                 <label class="time-radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
                   <input type="radio" name="time-Wednesday" value="AM" checked>
                   <span>Morning (05:30–10:00)</span>
-                  
+
                 </label>
                 <label class="time-radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
                   <input type="radio" name="time-Wednesday" value="PM">
@@ -1219,7 +1274,7 @@
         <h4 id="subTitle">Custom Cow Yoghurt Subscription</h4>
         <p id="jarSize">Jar Size: <span id="jarSizeSpan">1KG</span></p>
         <p id="planDetails"><i class="fas fa-check"></i> <span id="monthlyJars"></span></p>
-        <p>Subscription Duration: 
+        <p>Subscription Duration:
           <select id="monthsSelect">
             <option value="1" selected>1 Months</option>
             <option value="3">3 Months</option>
@@ -1232,7 +1287,7 @@
       <div class="flex-note">
         <i class="fas fa-check-circle"></i> Flexible Subscription: Cancel or modify anytime.
       </div>
-      <button class="add-to-cart-btn" id="addToCartBtn" disabled>
+      <button class="add-to-cart-btn" id="addToCartBtn" onclick="addToCart(${p.id})">
         <i class="fas fa-shopping-cart"></i> Add to Cart
       </button>
     </div>
@@ -1241,511 +1296,534 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Elements (your existing IDs/classes)
-  const citySelect = document.getElementById('citySelect');
-  const yogurtOptions = document.querySelectorAll('.yogurt-option');
-  const unitOptions = document.querySelectorAll('.unit-option');
-  const monthsSelect = document.getElementById('monthsSelect');
-  const qtyDisplay = document.getElementById('qtyDisplay');
-  const decrementBtn = document.getElementById('decrementBtn');
-  const incrementBtn = document.getElementById('incrementBtn');
-  const dayCheckboxes = document.querySelectorAll('.day-checkbox input[type="checkbox"]');
-  const scheduleError = document.getElementById('scheduleError');
-  const addToCartBtn = document.getElementById('addToCartBtn');
-  const subscriptionDetails = document.getElementById('subscriptionDetails');
-  const cityWarning = document.getElementById('cityWarning');
-  const priceBox = document.getElementById('priceBox');
-  const deliveryStep = document.getElementById('deliveryStep');
+    document.addEventListener('DOMContentLoaded', function () {
+      // Elements (your existing IDs/classes)
+      const citySelect = document.getElementById('citySelect');
+      const yogurtOptions = document.querySelectorAll('.yogurt-option');
+      const unitOptions = document.querySelectorAll('.unit-option');
+      const monthsSelect = document.getElementById('monthsSelect');
+      const qtyDisplay = document.getElementById('qtyDisplay');
+      const decrementBtn = document.getElementById('decrementBtn');
+      const incrementBtn = document.getElementById('incrementBtn');
+      const dayCheckboxes = document.querySelectorAll('.day-checkbox input[type="checkbox"]');
+      const scheduleError = document.getElementById('scheduleError');
+      const addToCartBtn = document.getElementById('addToCartBtn');
+      const subscriptionDetails = document.getElementById('subscriptionDetails');
+      const cityWarning = document.getElementById('cityWarning');
+      const priceBox = document.getElementById('priceBox');
+      const deliveryStep = document.getElementById('deliveryStep');
 
-  // Local state
-  let selectedYogurt = 'cow';
-  // Do not preselect a unit by default; user will choose one
-  let selectedUnit = '';
-  let quantity = parseInt(qtyDisplay.textContent, 10) || 4;
-  let selectedMonths = 1; // will be read from option label text
-  let lastFetchedUnitPrice = 0; // price per jar from DB
+      // Local state
+      let selectedYogurt = 'cow';
+      // Do not preselect a unit by default; user will choose one
+      let selectedUnit = '';
+      let quantity = parseInt(qtyDisplay.textContent, 10) || 4;
+      let selectedMonths = 1; // will be read from option label text
+      let lastFetchedUnitPrice = 0; // price per jar from DB
 
-  // Initialize select2
-  if (window.jQuery && $(citySelect).select2) {
-    $(citySelect).select2({
-      placeholder: "— Select Your City —",
-      allowClear: true,
-      width: '100%'
-    });
-    // ensure select2 triggers change events we handle
-    $(citySelect).on('change', onCityChange);
-  }
-
-  // helper: read months from select label text (handles incorrect numeric values in 'value' attr)
-  function readMonthsFromLabel() {
-    if (!monthsSelect) return 1;
-    const opt = monthsSelect.options[monthsSelect.selectedIndex];
-    if (!opt) return 1;
-    const parsed = parseInt(opt.textContent.trim(), 10);
-    return (Number.isInteger(parsed) && parsed > 0) ? parsed : 1;
-  }
-
-  // Update quantity UI
-  function setQuantity(q) {
-    quantity = q;
-    qtyDisplay.textContent = quantity;
-    // disable decrement when reaching min (4) to match your earlier behavior
-    decrementBtn.disabled = (quantity <= 4);
-  }
-
-  // toggle schedule visibility (if you have an inner wrapper; otherwise keep schedule visible)
-  function toggleSchedule() {
-    if (quantity > 0) {
-      if (document.getElementById('scheduleInner')) document.getElementById('scheduleInner').style.display = 'block';
-      decrementBtn.disabled = false;
-    } else {
-      if (document.getElementById('scheduleInner')) document.getElementById('scheduleInner').style.display = 'none';
-      decrementBtn.disabled = true;
-    }
-  }
-
-  // Update selects for per-day jars
-  function updateAllSelectOptions() {
-    // Special-case: when monthly quantity == 4, per-day selects represent bottles PER DELIVERY (0..1)
-    // For other quantities we keep per-day options up to the monthly quantity (legacy behavior)
-    const isStrict4 = (quantity === 4);
-    const maxOption = isStrict4 ? 1 : quantity;
-    document.querySelectorAll('.per-day-select').forEach(select => {
-      const currentVal = parseInt(select.value || 0, 10);
-      select.innerHTML = '';
-      for (let i = 0; i <= maxOption; i++) {
-        const opt = document.createElement('option');
-        opt.value = i;
-        opt.textContent = i;
-        select.appendChild(opt);
+      // Initialize select2
+      if (window.jQuery && $(citySelect).select2) {
+        $(citySelect).select2({
+          placeholder: "— Select Your City —",
+          allowClear: true,
+          width: '100%'
+        });
+        // ensure select2 triggers change events we handle
+        $(citySelect).on('change', onCityChange);
       }
-      select.value = Math.min(currentVal, maxOption);
-    });
-  }
 
-  // Show/hide per-day controls when a day checkbox is toggled
-  dayCheckboxes.forEach(cb => {
-    const label = cb.closest('.day-checkbox');
-    const select = label.querySelector('.per-day-select');
-    // some entries use 'bottles-text' or 'jars-text' naming; prefer either
-    const jarsText = label.querySelector('.bottles-text') || label.querySelector('.jars-text') || label.querySelector('.jars-text');
-    const timeOptions = label.querySelector('.time-options-per-day');
+      // helper: read months from select label text (handles incorrect numeric values in 'value' attr)
+      function readMonthsFromLabel() {
+        if (!monthsSelect) return 1;
+        const opt = monthsSelect.options[monthsSelect.selectedIndex];
+        if (!opt) return 1;
+        const parsed = parseInt(opt.textContent.trim(), 10);
+        return (Number.isInteger(parsed) && parsed > 0) ? parsed : 1;
+      }
 
-    function updateForCheck(e) {
-      const newState = e ? e.target.checked : cb.checked;
+      // Update quantity UI
+      function setQuantity(q) {
+        quantity = q;
+        qtyDisplay.textContent = quantity;
+        // disable decrement when reaching min (4) to match your earlier behavior
+        decrementBtn.disabled = (quantity <= 4);
+      }
 
-      // If strict 4-bottle rule applies, prevent checking more than 1 day
-      if (quantity === 4 && newState) {
-        const currentlyChecked = Array.from(dayCheckboxes).filter(x => x.checked).length;
-        if (currentlyChecked > 1) {
-          // undo the attempted check and inform user
-          e.target.checked = false;
-          scheduleError.style.display = 'block';
-          scheduleError.textContent = 'For 4 bottles/month you may only choose one delivery day (1 bottle/week).';
-          setTimeout(() => { scheduleError.style.display = 'none'; }, 3000);
+      // toggle schedule visibility (if you have an inner wrapper; otherwise keep schedule visible)
+      function toggleSchedule() {
+        if (quantity > 0) {
+          if (document.getElementById('scheduleInner')) document.getElementById('scheduleInner').style.display = 'block';
+          decrementBtn.disabled = false;
+        } else {
+          if (document.getElementById('scheduleInner')) document.getElementById('scheduleInner').style.display = 'none';
+          decrementBtn.disabled = true;
+        }
+      }
+      function addToCart(id) {
+        const card = document.querySelector(`[data-id="${id}"]`);
+
+        const item = {
+          id,
+          title: card.querySelector(".product-title").textContent,
+          price: Number(card.querySelector(".product-price").textContent.replace("AED", "")),
+          weight: card.querySelector(".product-weight").value,
+          quantity: Number(card.querySelector("input").value),
+          image: card.querySelector(".product-image").src
+        };
+
+        let existing = cart.find(c => c.id === item.id && c.weight === item.weight);
+
+        if (existing) {
+          existing.quantity += item.quantity;
+        } else {
+          cart.push(item);
+        }
+
+        saveCart();
+        renderCart();
+      }
+
+      // Update selects for per-day jars
+      function updateAllSelectOptions() {
+        // Special-case: when monthly quantity == 4, per-day selects represent bottles PER DELIVERY (0..1)
+        // For other quantities we keep per-day options up to the monthly quantity (legacy behavior)
+        const isStrict4 = (quantity === 4);
+        const maxOption = isStrict4 ? 1 : quantity;
+        document.querySelectorAll('.per-day-select').forEach(select => {
+          const currentVal = parseInt(select.value || 0, 10);
+          select.innerHTML = '';
+          for (let i = 0; i <= maxOption; i++) {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = i;
+            select.appendChild(opt);
+          }
+          select.value = Math.min(currentVal, maxOption);
+        });
+      }
+
+      // Show/hide per-day controls when a day checkbox is toggled
+      dayCheckboxes.forEach(cb => {
+        const label = cb.closest('.day-checkbox');
+        const select = label.querySelector('.per-day-select');
+        // some entries use 'bottles-text' or 'jars-text' naming; prefer either
+        const jarsText = label.querySelector('.bottles-text') || label.querySelector('.jars-text') || label.querySelector('.jars-text');
+        const timeOptions = label.querySelector('.time-options-per-day');
+
+        function updateForCheck(e) {
+          const newState = e ? e.target.checked : cb.checked;
+
+          // If strict 4-bottle rule applies, prevent checking more than 1 day
+          if (quantity === 4 && newState) {
+            const currentlyChecked = Array.from(dayCheckboxes).filter(x => x.checked).length;
+            if (currentlyChecked > 1) {
+              // undo the attempted check and inform user
+              e.target.checked = false;
+              scheduleError.style.display = 'block';
+              scheduleError.textContent = 'For 4 bottles/month you may only choose one delivery day (1 bottle/week).';
+              setTimeout(() => { scheduleError.style.display = 'none'; }, 3000);
+              return;
+            }
+          }
+
+          if (newState) {
+            if (select) select.style.display = 'inline-block';
+            if (jarsText) jarsText.style.display = 'inline';
+            if (timeOptions) timeOptions.style.display = 'block';
+          } else {
+            if (select) select.style.display = 'none';
+            if (jarsText) jarsText.style.display = 'none';
+            if (timeOptions) timeOptions.style.display = 'none';
+            if (select) select.value = 0;
+          }
+
+          // rebalance and refresh UI
+          redistribute();
+          updateSummary();
+          // recalc delivery + product price whenever schedule changes
+          if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
+          validateForm();
+        }
+
+        cb.addEventListener('change', updateForCheck);
+      });
+
+      // redistribute jars among selected days
+      // When quantity === 4 we distribute weekly-needed (1) as per-delivery bottles (0..1)
+      function redistribute() {
+        const selected = Array.from(dayCheckboxes).filter(cb => cb.checked);
+        if (selected.length === 0) return;
+
+        if (quantity === 4) {
+          // only one day allowed and it should have 1 per delivery
+          selected.forEach((cb, i) => {
+            const label = cb.closest('.day-checkbox');
+            const sel = label.querySelector('.per-day-select');
+            if (sel) sel.value = (i === 0 ? 1 : 0);
+          });
           return;
         }
+
+        // legacy behavior: distribute monthly quantity across selected days
+        const activePairs = selected.map(cb => {
+          const label = cb.closest('.day-checkbox');
+          return { cb, select: label.querySelector('.per-day-select') };
+        });
+        const numDays = activePairs.length;
+        const perDayBase = Math.floor(quantity / numDays);
+        const remainder = quantity % numDays;
+        activePairs.forEach((pair, index) => {
+          if (pair.select) pair.select.value = perDayBase + (index < remainder ? 1 : 0);
+        });
       }
 
-      if (newState) {
-        if (select) select.style.display = 'inline-block';
-        if (jarsText) jarsText.style.display = 'inline';
-        if (timeOptions) timeOptions.style.display = 'block';
-      } else {
-        if (select) select.style.display = 'none';
-        if (jarsText) jarsText.style.display = 'none';
-        if (timeOptions) timeOptions.style.display = 'none';
-        if (select) select.value = 0;
-      }
-
-      // rebalance and refresh UI
-      redistribute();
-      updateSummary();
-      // recalc delivery + product price whenever schedule changes
-      if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
-      validateForm();
-    }
-
-    cb.addEventListener('change', updateForCheck);
-  });
-
-  // redistribute jars among selected days
-  // When quantity === 4 we distribute weekly-needed (1) as per-delivery bottles (0..1)
-  function redistribute() {
-    const selected = Array.from(dayCheckboxes).filter(cb => cb.checked);
-    if (selected.length === 0) return;
-
-    if (quantity === 4) {
-      // only one day allowed and it should have 1 per delivery
-      selected.forEach((cb, i) => {
-        const label = cb.closest('.day-checkbox');
-        const sel = label.querySelector('.per-day-select');
-        if (sel) sel.value = (i === 0 ? 1 : 0);
-      });
-      return;
-    }
-
-    // legacy behavior: distribute monthly quantity across selected days
-    const activePairs = selected.map(cb => {
-      const label = cb.closest('.day-checkbox');
-      return { cb, select: label.querySelector('.per-day-select') };
-    });
-    const numDays = activePairs.length;
-    const perDayBase = Math.floor(quantity / numDays);
-    const remainder = quantity % numDays;
-    activePairs.forEach((pair, index) => {
-      if (pair.select) pair.select.value = perDayBase + (index < remainder ? 1 : 0);
-    });
-  }
-
-  // per-day select change handler
-  function handlePerDayChange(e) {
-    const thisSelect = e.target;
-    const thisLabel = thisSelect.closest('.day-checkbox');
-    const thisCb = thisLabel.querySelector('input[type="checkbox"]');
-    if (!thisCb.checked) return;
-    // If strict 4-bottle rule applies, keep per-day value to 1 and do not allow changes
-    if (quantity === 4) {
-      thisSelect.value = 1;
-      updateSummary();
-      return;
-    }
-
-    // legacy behavior: per-day selects are monthly portions
-    let proposed = parseInt(thisSelect.value || 0, 10);
-    const otherSelects = Array.from(dayCheckboxes)
-      .filter(cb => cb.checked && cb !== thisCb)
-      .map(cb => cb.closest('.day-checkbox').querySelector('.per-day-select'));
-    const otherSum = otherSelects.reduce((s, sel) => s + parseInt(sel.value || 0, 10), 0);
-    const maxForThis = Math.max(0, quantity - otherSum);
-    const actual = Math.max(0, Math.min(proposed, maxForThis));
-    thisSelect.value = actual;
-
-    const remaining = quantity - actual;
-    if (otherSelects.length > 0) {
-      const perOther = Math.floor(remaining / otherSelects.length);
-      const rem = remaining % otherSelects.length;
-      otherSelects.forEach((s, i) => { s.value = perOther + (i < rem ? 1 : 0); });
-    }
-    updateSummary();
-  }
-
-  // attach per-day select change listeners
-  document.querySelectorAll('.per-day-select').forEach(select => {
-    select.addEventListener('change', handlePerDayChange);
-  });
-
-  // yogurt option click (handles the label with input inside)
-  yogurtOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      yogurtOptions.forEach(opt => opt.classList.remove('selected'));
-      this.classList.add('selected');
-      const input = this.querySelector('input[type="radio"]');
-      if (input) selectedYogurt = input.value;
-      fetchAndUpdatePrice();
-      updateSummary();
-    });
-  });
-
-  // Unit option click
-  unitOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      unitOptions.forEach(opt => opt.classList.remove('selected'));
-      this.classList.add('selected');
-      const input = this.querySelector('input[type="radio"]');
-      if (input) selectedUnit = input.value;
-      fetchAndUpdatePrice();
-      updateSummary();
-    });
-  });
-
-  // months select change
-  if (monthsSelect) {
-    monthsSelect.addEventListener('change', function() {
-      selectedMonths = readMonthsFromLabel();
-      fetchAndUpdatePrice();
-      validateForm();
-    });
-    selectedMonths = readMonthsFromLabel();
-  }
-
-  // city select change (select2 or normal select)
-  function onCityChange() {
-    fetchAndUpdatePrice();
-    updateSummary();
-  }
-  citySelect.addEventListener('change', onCityChange);
-
-  // Build URL helper (encode params) - uses yogurt_type
-  function buildPriceUrl(city, yogurt, unit) {
-    const params = new URLSearchParams();
-    params.append('city', city);
-    params.append('yogurt_type', yogurt);
-    params.append('unit', unit);
-    return '/get-yogurt-price?' + params.toString();
-  }
-
-  // Fetch per-jar price from server and update total
-  function fetchAndUpdatePrice() {
-    const city = citySelect.value;
-    if (!city || !selectedYogurt || !selectedUnit) {
-      // hide price
-      priceBox.style.display = 'none';
-      lastFetchedUnitPrice = 0;
-      validateForm();
-      return;
-    }
-
-    const url = buildPriceUrl(city, selectedYogurt, selectedUnit);
-
-    // show loading state
-    priceBox.style.display = 'block';
-    priceBox.textContent = 'Fetching price...';
-
-    fetch(url, {
-      credentials: 'same-origin',
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.success && typeof data.price !== 'undefined') {
-          lastFetchedUnitPrice = Number(data.price) || 0;
-        } else {
-          lastFetchedUnitPrice = 0;
+      // per-day select change handler
+      function handlePerDayChange(e) {
+        const thisSelect = e.target;
+        const thisLabel = thisSelect.closest('.day-checkbox');
+        const thisCb = thisLabel.querySelector('input[type="checkbox"]');
+        if (!thisCb.checked) return;
+        // If strict 4-bottle rule applies, keep per-day value to 1 and do not allow changes
+        if (quantity === 4) {
+          thisSelect.value = 1;
+          updateSummary();
+          return;
         }
-        // update combined display (product + delivery)
-        updatePriceDisplay();
-        validateForm();
-      })
-      .catch(err => {
-        console.error('Price fetch error:', err);
-        lastFetchedUnitPrice = 0;
-        updatePriceDisplay();
-        validateForm();
-      });
-  }
 
-  // Calculate delivery charges based on selected days/time slots
-  function calculateDeliveryCharges() {
-    // sum per-delivery charge for each selected day
-    let chargePerDelivery = 0;
-    Array.from(dayCheckboxes).forEach(cb => {
-      if (!cb.checked) return;
-      const dayName = cb.value;
-      const label = cb.closest('.day-checkbox');
-      const timeRadio = label.querySelector(`input[name="time-${dayName}"]:checked`);
-      if (timeRadio) {
-        const c = parseFloat(timeRadio.dataset.charge || timeRadio.getAttribute('data-charge') || 0);
-        chargePerDelivery += isFinite(c) ? c : 0;
+        // legacy behavior: per-day selects are monthly portions
+        let proposed = parseInt(thisSelect.value || 0, 10);
+        const otherSelects = Array.from(dayCheckboxes)
+          .filter(cb => cb.checked && cb !== thisCb)
+          .map(cb => cb.closest('.day-checkbox').querySelector('.per-day-select'));
+        const otherSum = otherSelects.reduce((s, sel) => s + parseInt(sel.value || 0, 10), 0);
+        const maxForThis = Math.max(0, quantity - otherSum);
+        const actual = Math.max(0, Math.min(proposed, maxForThis));
+        thisSelect.value = actual;
+
+        const remaining = quantity - actual;
+        if (otherSelects.length > 0) {
+          const perOther = Math.floor(remaining / otherSelects.length);
+          const rem = remaining % otherSelects.length;
+          otherSelects.forEach((s, i) => { s.value = perOther + (i < rem ? 1 : 0); });
+        }
+        updateSummary();
       }
-    });
-    // total delivery charge = per-delivery sum * 4 weeks * months
-    const months = readMonthsFromLabel();
-    return chargePerDelivery * 4 * months;
-  }
 
-  // Update the price box to include product total + delivery charges
-  function updatePriceDisplay() {
-    const months = readMonthsFromLabel();
-    const productTotal = (lastFetchedUnitPrice || 0) * quantity * months;
-    const deliveryTotal = calculateDeliveryCharges();
-    const combined = productTotal + deliveryTotal;
-    if (!priceBox) return;
-    // show formatted result
-    priceBox.style.display = 'block';
-    priceBox.innerHTML = `
+      // attach per-day select change listeners
+      document.querySelectorAll('.per-day-select').forEach(select => {
+        select.addEventListener('change', handlePerDayChange);
+      });
+
+      // yogurt option click (handles the label with input inside)
+      yogurtOptions.forEach(option => {
+        option.addEventListener('click', function () {
+          yogurtOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          const input = this.querySelector('input[type="radio"]');
+          if (input) selectedYogurt = input.value;
+          fetchAndUpdatePrice();
+          updateSummary();
+        });
+      });
+
+      // Unit option click
+      unitOptions.forEach(option => {
+        option.addEventListener('click', function () {
+          unitOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          const input = this.querySelector('input[type="radio"]');
+          if (input) selectedUnit = input.value;
+          fetchAndUpdatePrice();
+          updateSummary();
+        });
+      });
+
+      // months select change
+      if (monthsSelect) {
+        monthsSelect.addEventListener('change', function () {
+          selectedMonths = readMonthsFromLabel();
+          fetchAndUpdatePrice();
+          validateForm();
+        });
+        selectedMonths = readMonthsFromLabel();
+      }
+
+      // city select change (select2 or normal select)
+      function onCityChange() {
+        fetchAndUpdatePrice();
+        updateSummary();
+      }
+      citySelect.addEventListener('change', onCityChange);
+
+      // Build URL helper (encode params) - uses yogurt_type
+      function buildPriceUrl(city, yogurt, unit) {
+        const params = new URLSearchParams();
+        params.append('city', city);
+        params.append('yogurt_type', yogurt);
+        params.append('unit', unit);
+        return '/get-yogurt-price?' + params.toString();
+      }
+
+      // Fetch per-jar price from server and update total
+      function fetchAndUpdatePrice() {
+        const city = citySelect.value;
+        if (!city || !selectedYogurt || !selectedUnit) {
+          // hide price
+          priceBox.style.display = 'none';
+          lastFetchedUnitPrice = 0;
+          validateForm();
+          return;
+        }
+
+        const url = buildPriceUrl(city, selectedYogurt, selectedUnit);
+
+        // show loading state
+        priceBox.style.display = 'block';
+        priceBox.textContent = 'Fetching price...';
+
+        fetch(url, {
+          credentials: 'same-origin',
+          headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.success && typeof data.price !== 'undefined') {
+              lastFetchedUnitPrice = Number(data.price) || 0;
+            } else {
+              lastFetchedUnitPrice = 0;
+            }
+            // update combined display (product + delivery)
+            updatePriceDisplay();
+            validateForm();
+          })
+          .catch(err => {
+            console.error('Price fetch error:', err);
+            lastFetchedUnitPrice = 0;
+            updatePriceDisplay();
+            validateForm();
+          });
+      }
+
+      // Calculate delivery charges based on selected days/time slots
+      function calculateDeliveryCharges() {
+        // sum per-delivery charge for each selected day
+        let chargePerDelivery = 0;
+        Array.from(dayCheckboxes).forEach(cb => {
+          if (!cb.checked) return;
+          const dayName = cb.value;
+          const label = cb.closest('.day-checkbox');
+          const timeRadio = label.querySelector(`input[name="time-${dayName}"]:checked`);
+          if (timeRadio) {
+            const c = parseFloat(timeRadio.dataset.charge || timeRadio.getAttribute('data-charge') || 0);
+            chargePerDelivery += isFinite(c) ? c : 0;
+          }
+        });
+        // total delivery charge = per-delivery sum * 4 weeks * months
+        const months = readMonthsFromLabel();
+        return chargePerDelivery * 4 * months;
+      }
+
+      // Update the price box to include product total + delivery charges
+      function updatePriceDisplay() {
+        const months = readMonthsFromLabel();
+        const productTotal = (lastFetchedUnitPrice || 0) * quantity * months;
+        const deliveryTotal = calculateDeliveryCharges();
+        const combined = productTotal + deliveryTotal;
+        if (!priceBox) return;
+        // show formatted result
+        priceBox.style.display = 'block';
+        priceBox.innerHTML = `
       <div style="font-weight:700;">Your Subscription Amount: AED ${combined.toFixed(2)}</div>
       <div style="margin-top:8px; font-size:0.95rem; color:#fff; opacity:0.95;">
         <div>Product: AED ${productTotal.toFixed(2)}</div>
         <div>Delivery: AED ${deliveryTotal.toFixed(2)}</div>
       </div>
     `;
-  }
+      }
 
-  // Update summary UI (enable/disable sections)
-  function updateSummary() {
-    const city = citySelect.value;
+      // Update summary UI (enable/disable sections)
+      function updateSummary() {
+        const city = citySelect.value;
 
-    if (!city) {
-      cityWarning.style.display = 'block';
-      subscriptionDetails.style.display = 'none';
-      priceBox.style.display = 'none';
-      deliveryStep.style.display = 'none';
-      addToCartBtn.disabled = true;
-      return;
-    }
-
-    cityWarning.style.display = 'none';
-    subscriptionDetails.style.display = 'block';
-    deliveryStep.style.display = 'block';
-    priceBox.style.display = 'block';
-
-    // Update subscriptionDetails text
-    const yogurtItem = selectedYogurt;
-  const unitLabel = selectedUnit || document.querySelector('.unit-option.selected')?.querySelector('input')?.value || '';
-  document.getElementById('subTitle').innerText = `Custom ${ (yogurtItem.charAt(0).toUpperCase() + yogurtItem.slice(1)) } Yoghurt Subscription`;
-  document.getElementById('jarSizeSpan').innerText = unitLabel || '—';
-    document.getElementById('monthlyJars').innerText = `${quantity} Jars per Month`;
-  }
-
-  // Form validation enabling Add to Cart
-  function validateForm() {
-    const city = citySelect.value;
-    if (!city) {
-      addToCartBtn.disabled = true;
-      scheduleError.style.display = 'none';
-      return;
-    }
-
-    // schedule validation
-    const selectedCount = Array.from(dayCheckboxes).filter(cb => cb.checked).length;
-    let isValid = true;
-
-    if (quantity < 1) {
-      scheduleError.style.display = 'block';
-      scheduleError.textContent = 'Please select at least 1 jar per month.';
-      isValid = false;
-    } else if (selectedCount < 1) {
-      scheduleError.style.display = 'block';
-      scheduleError.textContent = 'Please select at least one delivery day.';
-      isValid = false;
-    } else {
-      // ensure a time is chosen for each selected day
-      let allTimesSelected = true;
-      Array.from(dayCheckboxes).forEach(cb => {
-        if (cb.checked) {
-          const label = cb.closest('.day-checkbox');
-          const dayName = cb.value;
-          const timeRadios = label.querySelectorAll(`input[name="time-${dayName}"]`);
-          const selectedTime = Array.from(timeRadios).some(r => r.checked);
-          if (!selectedTime) allTimesSelected = false;
+        if (!city) {
+          cityWarning.style.display = 'block';
+          subscriptionDetails.style.display = 'none';
+          priceBox.style.display = 'none';
+          deliveryStep.style.display = 'none';
+          addToCartBtn.disabled = true;
+          return;
         }
-      });
-      if (!allTimesSelected) {
-        scheduleError.style.display = 'block';
-        scheduleError.textContent = 'Please select a time slot for each delivery day.';
-        isValid = false;
-      } else {
-        scheduleError.style.display = 'none';
+
+        cityWarning.style.display = 'none';
+        subscriptionDetails.style.display = 'block';
+        deliveryStep.style.display = 'block';
+        priceBox.style.display = 'block';
+
+        // Update subscriptionDetails text
+        const yogurtItem = selectedYogurt;
+        const unitLabel = selectedUnit || document.querySelector('.unit-option.selected')?.querySelector('input')?.value || '';
+        document.getElementById('subTitle').innerText = `Custom ${(yogurtItem.charAt(0).toUpperCase() + yogurtItem.slice(1))} Yoghurt Subscription`;
+        document.getElementById('jarSizeSpan').innerText = unitLabel || '—';
+        document.getElementById('monthlyJars').innerText = `${quantity} Jars per Month`;
       }
-    }
 
-    // price must be fetched and > 0
-    if (!(lastFetchedUnitPrice > 0)) {
-      isValid = false;
-    }
+      // Form validation enabling Add to Cart
+      function validateForm() {
+        const city = citySelect.value;
+        if (!city) {
+          addToCartBtn.disabled = true;
+          scheduleError.style.display = 'none';
+          return;
+        }
 
-    addToCartBtn.disabled = !isValid;
-  }
+        // schedule validation
+        const selectedCount = Array.from(dayCheckboxes).filter(cb => cb.checked).length;
+        let isValid = true;
 
-  // initial setup
-  updateAllSelectOptions();
-  // ensure Saturday/Monday appear selected as in your original HTML
-  const saturdayCb = Array.from(dayCheckboxes).find(cb => cb.value === 'Saturday');
-  if (saturdayCb) {
-    saturdayCb.checked = true;
-    const satLabel = saturdayCb.closest('.day-checkbox');
-    const satSelect = satLabel.querySelector('.per-day-select');
-    const satJarsText = satLabel.querySelector('.jars-text');
-    const satTimeOptions = satLabel.querySelector('.time-options-per-day');
-    if (satSelect) satSelect.style.display = 'inline-block';
-    if (satJarsText) satJarsText.style.display = 'inline';
-    if (satTimeOptions) satTimeOptions.style.display = 'block';
-  }
-  redistribute();
-  toggleSchedule();
-  updateSummary();
-  fetchAndUpdatePrice();
-  validateForm();
+        if (quantity < 1) {
+          scheduleError.style.display = 'block';
+          scheduleError.textContent = 'Please select at least 1 jar per month.';
+          isValid = false;
+        } else if (selectedCount < 1) {
+          scheduleError.style.display = 'block';
+          scheduleError.textContent = 'Please select at least one delivery day.';
+          isValid = false;
+        } else {
+          // ensure a time is chosen for each selected day
+          let allTimesSelected = true;
+          Array.from(dayCheckboxes).forEach(cb => {
+            if (cb.checked) {
+              const label = cb.closest('.day-checkbox');
+              const dayName = cb.value;
+              const timeRadios = label.querySelectorAll(`input[name="time-${dayName}"]`);
+              const selectedTime = Array.from(timeRadios).some(r => r.checked);
+              if (!selectedTime) allTimesSelected = false;
+            }
+          });
+          if (!allTimesSelected) {
+            scheduleError.style.display = 'block';
+            scheduleError.textContent = 'Please select a time slot for each delivery day.';
+            isValid = false;
+          } else {
+            scheduleError.style.display = 'none';
+          }
+        }
 
-  // Wire quantity buttons to update behavior and enforce the strict-4 rule
-  function enforceDayLimitOnQuantityChange() {
-    if (quantity !== 4) return;
-    // if quantity is exactly 4, ensure at most one day is selected and that day's select = 1
-    const checked = Array.from(dayCheckboxes).filter(cb => cb.checked);
-    if (checked.length > 1) {
-      // uncheck extras (keep the first)
-      const toUncheck = checked.slice(1);
-      toUncheck.forEach(cb => {
-        cb.checked = false;
-        const label = cb.closest('.day-checkbox');
-        const sel = label.querySelector('.per-day-select');
-        const jarsText = label.querySelector('.bottles-text') || label.querySelector('.jars-text');
-        const timeOptions = label.querySelector('.time-options-per-day');
-        if (sel) sel.style.display = 'none';
-        if (jarsText) jarsText.style.display = 'none';
-        if (timeOptions) timeOptions.style.display = 'none';
-        if (sel) sel.value = 0;
-      });
-      const first = checked[0];
-      if (first) {
-        const label = first.closest('.day-checkbox');
-        const sel = label.querySelector('.per-day-select');
-        if (sel) { sel.style.display = 'inline-block'; sel.value = 1; }
+        // price must be fetched and > 0
+        if (!(lastFetchedUnitPrice > 0)) {
+          isValid = false;
+        }
+
+        addToCartBtn.disabled = !isValid;
       }
-      scheduleError.style.display = 'block';
-      scheduleError.textContent = 'Selection adjusted: for 4 bottles/month please choose one day (1 bottle/week).';
-      setTimeout(() => { scheduleError.style.display = 'none'; }, 3000);
-    }
-  }
 
-  if (incrementBtn) {
-    incrementBtn.addEventListener('click', function() {
-      setQuantity(quantity + 1);
+      // initial setup
       updateAllSelectOptions();
-      enforceDayLimitOnQuantityChange();
-      redistribute();
-      fetchAndUpdatePrice();
-      updateSummary();
-      validateForm();
-    });
-  }
-  if (decrementBtn) {
-    decrementBtn.addEventListener('click', function() {
-      const newQ = Math.max(4, quantity - 1);
-      setQuantity(newQ);
-      updateAllSelectOptions();
-      enforceDayLimitOnQuantityChange();
-      redistribute();
-      fetchAndUpdatePrice();
-      updateSummary();
-      validateForm();
-    });
-  }
-
-  // Add to Cart handler
-  addToCartBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (addToCartBtn.disabled) return;
-
-    // Prepare data for adding to cart
-    const city = citySelect.value;
-    const yogurt = selectedYogurt;
-    const unit = selectedUnit;
-    const months = readMonthsFromLabel();
-    const perJarPrice = lastFetchedUnitPrice;
-    const totalAmount = (perJarPrice * quantity * months);
-
-    // Collect schedule details
-    const schedule = {};
-    Array.from(dayCheckboxes).forEach(cb => {
-      if (cb.checked) {
-        const dayName = cb.value;
-        const label = cb.closest('.day-checkbox');
-        const jars = parseInt(label.querySelector('.per-day-select').value || 0, 10);
-        const timeRadios = label.querySelectorAll(`input[name="time-${dayName}"]`);
-        const selectedTime = Array.from(timeRadios).find(r => r.checked)?.value || '';
-        schedule[dayName] = { jars, time: selectedTime };
+      // ensure Saturday/Monday appear selected as in your original HTML
+      const saturdayCb = Array.from(dayCheckboxes).find(cb => cb.value === 'Saturday');
+      if (saturdayCb) {
+        saturdayCb.checked = true;
+        const satLabel = saturdayCb.closest('.day-checkbox');
+        const satSelect = satLabel.querySelector('.per-day-select');
+        const satJarsText = satLabel.querySelector('.jars-text');
+        const satTimeOptions = satLabel.querySelector('.time-options-per-day');
+        if (satSelect) satSelect.style.display = 'inline-block';
+        if (satJarsText) satJarsText.style.display = 'inline';
+        if (satTimeOptions) satTimeOptions.style.display = 'block';
       }
-    });
+      redistribute();
+      toggleSchedule();
+      updateSummary();
+      fetchAndUpdatePrice();
+      validateForm();
 
-    // TODO: send to backend / add to cart endpoint - placeholder below
-    console.log('Add to cart payload:', {
-      city, yogurt, unit, quantity, months, perJarPrice, totalAmount, schedule
-    });
+      // Wire quantity buttons to update behavior and enforce the strict-4 rule
+      function enforceDayLimitOnQuantityChange() {
+        if (quantity !== 4) return;
+        // if quantity is exactly 4, ensure at most one day is selected and that day's select = 1
+        const checked = Array.from(dayCheckboxes).filter(cb => cb.checked);
+        if (checked.length > 1) {
+          // uncheck extras (keep the first)
+          const toUncheck = checked.slice(1);
+          toUncheck.forEach(cb => {
+            cb.checked = false;
+            const label = cb.closest('.day-checkbox');
+            const sel = label.querySelector('.per-day-select');
+            const jarsText = label.querySelector('.bottles-text') || label.querySelector('.jars-text');
+            const timeOptions = label.querySelector('.time-options-per-day');
+            if (sel) sel.style.display = 'none';
+            if (jarsText) jarsText.style.display = 'none';
+            if (timeOptions) timeOptions.style.display = 'none';
+            if (sel) sel.value = 0;
+          });
+          const first = checked[0];
+          if (first) {
+            const label = first.closest('.day-checkbox');
+            const sel = label.querySelector('.per-day-select');
+            if (sel) { sel.style.display = 'inline-block'; sel.value = 1; }
+          }
+          scheduleError.style.display = 'block';
+          scheduleError.textContent = 'Selection adjusted: for 4 bottles/month please choose one day (1 bottle/week).';
+          setTimeout(() => { scheduleError.style.display = 'none'; }, 3000);
+        }
+      }
 
-    alert(`Added to cart:
+      if (incrementBtn) {
+        incrementBtn.addEventListener('click', function () {
+          setQuantity(quantity + 1);
+          updateAllSelectOptions();
+          enforceDayLimitOnQuantityChange();
+          redistribute();
+          fetchAndUpdatePrice();
+          updateSummary();
+          validateForm();
+        });
+      }
+      if (decrementBtn) {
+        decrementBtn.addEventListener('click', function () {
+          const newQ = Math.max(4, quantity - 1);
+          setQuantity(newQ);
+          updateAllSelectOptions();
+          enforceDayLimitOnQuantityChange();
+          redistribute();
+          fetchAndUpdatePrice();
+          updateSummary();
+          validateForm();
+        });
+      }
+
+      // Add to Cart handler
+      addToCartBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (addToCartBtn.disabled) return;
+
+        // Prepare data for adding to cart
+        const city = citySelect.value;
+        const yogurt = selectedYogurt;
+        const unit = selectedUnit;
+        const months = readMonthsFromLabel();
+        const perJarPrice = lastFetchedUnitPrice;
+        const totalAmount = (perJarPrice * quantity * months);
+
+        // Collect schedule details
+        const schedule = {};
+        Array.from(dayCheckboxes).forEach(cb => {
+          if (cb.checked) {
+            const dayName = cb.value;
+            const label = cb.closest('.day-checkbox');
+            const jars = parseInt(label.querySelector('.per-day-select').value || 0, 10);
+            const timeRadios = label.querySelectorAll(`input[name="time-${dayName}"]`);
+            const selectedTime = Array.from(timeRadios).find(r => r.checked)?.value || '';
+            schedule[dayName] = { jars, time: selectedTime };
+          }
+        });
+
+        // TODO: send to backend / add to cart endpoint - placeholder below
+        console.log('Add to cart payload:', {
+          city, yogurt, unit, quantity, months, perJarPrice, totalAmount, schedule
+        });
+
+        alert(`Added to cart:
 City: ${city}
 Yoghurt: ${yogurt}
 Unit: ${unit}
@@ -1753,171 +1831,172 @@ Quantity (per month): ${quantity}
 Months: ${months}
 Total: AED ${totalAmount}`);
 
-    // Example: To POST to server (uncomment and adapt)
-    /*
-    fetch('/cart/add-yoghurt-subscription', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      },
-      body: JSON.stringify({
-        city, yogurt, unit, quantity, months, perJarPrice, totalAmount, schedule
-      })
-    }).then(res => res.json()).then(resp => {
-      // handle success / redirect to checkout
+        // Example: To POST to server (uncomment and adapt)
+        /*
+        fetch('/cart/add-yoghurt-subscription', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({
+            city, yogurt, unit, quantity, months, perJarPrice, totalAmount, schedule
+          })
+        }).then(res => res.json()).then(resp => {
+          // handle success / redirect to checkout
+        });
+        */
+      });
     });
-    */
-  });
-});
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Handle Select2 city dropdown
-  $(document).on('select2:select', '#citySelect', function(e) {
-    const city = this.value;
-    console.log('Selected city:', city);
+    document.addEventListener('DOMContentLoaded', function () {
+      // Handle Select2 city dropdown
+      $(document).on('select2:select', '#citySelect', function (e) {
+        const city = this.value;
+        console.log('Selected city:', city);
 
-    if (!city) return;
+        if (!city) return;
 
-    // Fetch slots dynamically
-    fetch(`/get-city-slots/${city}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log('Slots fetched:', data);
-        updateTimeSlotOptions(data);
-      })
-      .catch(err => console.error('Error fetching slots:', err));
-  });
+        // Fetch slots dynamically
+        fetch(`/get-city-slots/${city}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log('Slots fetched:', data);
+            updateTimeSlotOptions(data);
+          })
+          .catch(err => console.error('Error fetching slots:', err));
+      });
 
-  // Function to update time slot radio buttons for each day
-  function updateTimeSlotOptions(timeSlots) {
-    const allDays = document.querySelectorAll('.time-options-per-day');
-    allDays.forEach(container => {
-      container.innerHTML = ''; // Clear old slots
+      // Function to update time slot radio buttons for each day
+      function updateTimeSlotOptions(timeSlots) {
+        const allDays = document.querySelectorAll('.time-options-per-day');
+        allDays.forEach(container => {
+          container.innerHTML = ''; // Clear old slots
 
-      if (!timeSlots || timeSlots.length === 0) {
-        container.innerHTML = '<p style="color:#999;">No slots available for this city</p>';
-        return;
-      }
+          if (!timeSlots || timeSlots.length === 0) {
+            container.innerHTML = '<p style="color:#999;">No slots available for this city</p>';
+            return;
+          }
 
-      const dayName = container.closest('.day-checkbox').querySelector('.day-name').textContent;
+          const dayName = container.closest('.day-checkbox').querySelector('.day-name').textContent;
 
-      timeSlots.forEach((slot, index) => {
-        const label = document.createElement('label');
-        label.classList.add('time-radio');
-        label.style.cssText = 'display:flex; align-items:center; gap:0.5rem; cursor:pointer; margin-bottom:4px;';
+          timeSlots.forEach((slot, index) => {
+            const label = document.createElement('label');
+            label.classList.add('time-radio');
+            label.style.cssText = 'display:flex; align-items:center; gap:0.5rem; cursor:pointer; margin-bottom:4px;';
 
-        label.innerHTML = `
+            label.innerHTML = `
           <input type="radio" name="time-${dayName}" value="${slot.id}" data-charge="${slot.charge || 0}" ${index === 0 ? 'checked' : ''}>
           <span>${slot.time} (AED ${slot.charge || 0})</span>
         `;
-        container.appendChild(label);
+            container.appendChild(label);
+          });
+
+          // attach change listeners so delivery charge updates immediately
+          const radios = container.querySelectorAll(`input[name="time-${dayName}"]`);
+          radios.forEach(r => r.addEventListener('change', function () {
+            if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
+          }));
+        });
+      }
+
+      // Auto-load if city preselected
+      const preCity = $('#citySelect').val();
+      if (preCity) {
+        fetch(`/get-city-slots/${preCity}`)
+          .then(res => res.json())
+          .then(data => updateTimeSlotOptions(data));
+      }
+
+      // Delegate: whenever any time-slot radio changes, refresh the combined price
+      document.addEventListener('change', function (e) {
+        const t = e.target;
+        if (!t) return;
+        if (t.matches && (t.matches('input[type="radio"][name^="time-"]') || t.matches('input[name="timeSlot"]'))) {
+          if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
+        }
       });
-
-      // attach change listeners so delivery charge updates immediately
-      const radios = container.querySelectorAll(`input[name="time-${dayName}"]`);
-      radios.forEach(r => r.addEventListener('change', function() {
-        if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
-      }));
     });
-  }
 
-  // Auto-load if city preselected
-  const preCity = $('#citySelect').val();
-  if (preCity) {
-    fetch(`/get-city-slots/${preCity}`)
-      .then(res => res.json())
-      .then(data => updateTimeSlotOptions(data));
-  }
+    document.addEventListener('DOMContentLoaded', function () {
+      const citySelect = document.getElementById('citySelect');
+      const daysCheckboxes = document.querySelectorAll('input[name="days[]"]');
+      const monthsSelect = document.getElementById('monthsSelect');
+      const timeSlotContainer = document.getElementById('timeSlotContainer');
+      const amountDisplay = document.getElementById('priceBox');
 
-  // Delegate: whenever any time-slot radio changes, refresh the combined price
-  document.addEventListener('change', function(e) {
-    const t = e.target;
-    if (!t) return;
-    if (t.matches && (t.matches('input[type="radio"][name^="time-"]') || t.matches('input[name="timeSlot"]'))) {
-      if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
-    }
-  });
-});
+      let selectedSlotCharge = 0;
 
-document.addEventListener('DOMContentLoaded', function() {
-  const citySelect = document.getElementById('citySelect');
-  const daysCheckboxes = document.querySelectorAll('input[name="days[]"]');
-  const monthsSelect = document.getElementById('monthsSelect');
-  const timeSlotContainer = document.getElementById('timeSlotContainer');
-  const amountDisplay = document.getElementById('priceBox');
+      // Fetch slots on city change
+      $(document).on('select2:select', '#citySelect', function (e) {
+        const city = this.value;
 
-  let selectedSlotCharge = 0;
+        if (!city) return;
 
-  // Fetch slots on city change
-   $(document).on('select2:select', '#citySelect', function(e) {
-      const city = this.value;
- 
-    if (!city) return;
+        fetch(`/get-city-slots/${city}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log("Slots fetchedddd:", data);
+            timeSlotContainer.innerHTML = '';
+            data.forEach(slot => {
+              console.log(slot.charge);
 
-    fetch(`/get-city-slots/${city}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("Slots fetchedddd:", data);
-        timeSlotContainer.innerHTML = '';
-        data.forEach(slot => {
-            console.log(slot.charge);
-            
-          const label = document.createElement('label');
+              const label = document.createElement('label');
 
-          label.innerHTML = `
+              label.innerHTML = `
             <input type="radio" name="timeSlot" value="${slot.id}" data-charge="${slot.charge}">
             ${slot.time} (AED ${slot.charge})
           `;
-          timeSlotContainer.appendChild(label);
-        });
+              timeSlotContainer.appendChild(label);
+            });
 
-        // When user selects time slot (global radios), update combined price
-        document.querySelectorAll('input[name="timeSlot"]').forEach(radio => {
-          radio.addEventListener('change', function() {
-            selectedSlotCharge = parseFloat(this.dataset.charge);
-            if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
-            else calculateTotal();
+            // When user selects time slot (global radios), update combined price
+            document.querySelectorAll('input[name="timeSlot"]').forEach(radio => {
+              radio.addEventListener('change', function () {
+                selectedSlotCharge = parseFloat(this.dataset.charge);
+                if (typeof updatePriceDisplay === 'function') updatePriceDisplay();
+                else calculateTotal();
+              });
+            });
           });
-        });
       });
-  });
 
-  // When days or months change
-  daysCheckboxes.forEach(cb => cb.addEventListener('change', function() {
-    if (typeof updatePriceDisplay === 'function') updatePriceDisplay(); else calculateTotal();
-  }));
-  monthsSelect.addEventListener('change', function() {
-    if (typeof updatePriceDisplay === 'function') updatePriceDisplay(); else calculateTotal();
-  });
+      // When days or months change
+      daysCheckboxes.forEach(cb => cb.addEventListener('change', function () {
+        if (typeof updatePriceDisplay === 'function') updatePriceDisplay(); else calculateTotal();
+      }));
+      monthsSelect.addEventListener('change', function () {
+        if (typeof updatePriceDisplay === 'function') updatePriceDisplay(); else calculateTotal();
+      });
 
-  function calculateTotal() {
-    // Deprecated: kept for backward compatibility. Prefer updatePriceDisplay()
-    if (typeof updatePriceDisplay === 'function') {
-      updatePriceDisplay();
-      return;
-    }
-    const selectedDays = [...daysCheckboxes].filter(cb => cb.checked).length;
-    const months = parseInt(monthsSelect.value) || 1;
+      function calculateTotal() {
+        // Deprecated: kept for backward compatibility. Prefer updatePriceDisplay()
+        if (typeof updatePriceDisplay === 'function') {
+          updatePriceDisplay();
+          return;
+        }
+        const selectedDays = [...daysCheckboxes].filter(cb => cb.checked).length;
+        const months = parseInt(monthsSelect.value) || 1;
 
-    if (!selectedSlotCharge || selectedDays === 0) {
-      amountDisplay.innerHTML = `Your Subscription Amount: AED 0.00`;
-      return;
-    }
+        if (!selectedSlotCharge || selectedDays === 0) {
+          amountDisplay.innerHTML = `Your Subscription Amount: AED 0.00`;
+          return;
+        }
 
-    const total = selectedSlotCharge * selectedDays * 4 * months;
-    amountDisplay.innerHTML = `
+        const total = selectedSlotCharge * selectedDays * 4 * months;
+        amountDisplay.innerHTML = `
       Your Subscription Amount: <strong style="color:green">AED ${total.toFixed(2)}</strong>
       <br><small>(${selectedDays} days/week × AED ${selectedSlotCharge} × 4 weeks × ${months} month)</small>
     `;
-  }
-});
+      }
+    });
 
 
-</script>
+  </script>
 
 
 
 </body>
+
 </html>

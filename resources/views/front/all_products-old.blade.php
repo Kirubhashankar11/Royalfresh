@@ -270,7 +270,8 @@
                 <select class="product-weight">
                   @if($product->variant_type == 'simple')
                     <option value="{{ $product->s_weight }} {{$product->Sunit->name}}">{{ $product->s_weight }}
-                      {{$product->Sunit->name}}</option>
+                      {{$product->Sunit->name}}
+                    </option>
                   @else
 
                     @foreach($product->Productvariants as $w)
@@ -287,8 +288,8 @@
                 <button onclick="updateQuantity(this, 1)">+</button>
               </div>
 
-              <button class="add-cart-btn" data-id="{{ $product->id }}" data-type="{{ $product->variant_type }}">
-                Add to Cart
+              <button class="add-cart-btn" onclick="addToCart(${p.id})">
+                <i class="fas fa-cart-plus"></i> Add to Cart
               </button>
 
             </div>
@@ -363,6 +364,29 @@
 
       });
     });
+    function addToCart(id) {
+      const card = document.querySelector(`[data-id="${id}"]`);
+
+      const item = {
+        id,
+        title: card.querySelector(".product-title").textContent,
+        price: Number(card.querySelector(".product-price").textContent.replace("AED", "")),
+        weight: card.querySelector(".product-weight").value,
+        quantity: Number(card.querySelector("input").value),
+        image: card.querySelector(".product-image").src
+      };
+
+      let existing = cart.find(c => c.id === item.id && c.weight === item.weight);
+
+      if (existing) {
+        existing.quantity += item.quantity;
+      } else {
+        cart.push(item);
+      }
+
+      saveCart();
+      renderCart();
+    }
   </script>
 
 </body>

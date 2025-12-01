@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Royal Fresh – Premium Meat & Milk Delivery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
- 
-   <style>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <style>
     :root {
       --primary-brown: #62451c;
       --light-brown: #f7ecdc;
@@ -20,11 +23,13 @@
       --shadow-md: 0 4px 20px rgba(98, 69, 28, 0.12);
       --shadow-lg: 0 8px 30px rgba(98, 69, 28, 0.15);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--cream);
@@ -44,11 +49,13 @@
       padding: 1rem 4vw;
       transition: all 0.3s ease;
     }
+
     header.scrolled {
       padding: 0.7rem 4vw;
       background: rgba(255, 249, 240, 0.98);
       backdrop-filter: blur(10px);
     }
+
     .header-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -58,6 +65,7 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -67,14 +75,17 @@
       font-size: 1.6rem;
       font-family: 'Playfair Display', serif;
     }
+
     .logo img {
       height: 42px;
       margin-right: 12px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
+
     .logo-text {
       display: inline;
     }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -82,6 +93,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .nav-links a {
       text-decoration: none;
       color: var(--dark-brown);
@@ -91,9 +103,11 @@
       padding: 0.5rem 0;
       position: relative;
     }
+
     .nav-links a:hover {
       color: var(--primary-brown);
     }
+
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -104,9 +118,11 @@
       background-color: var(--primary-brown);
       transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
     .nav-links a:hover::after {
       width: 100%;
     }
+
     .search-container {
       flex: 1;
       min-width: 240px;
@@ -114,6 +130,7 @@
       margin: 0 1.5rem;
       position: relative;
     }
+
     #searchInput {
       width: 100%;
       padding: 0.8rem 1.2rem 0.8rem 3rem;
@@ -125,10 +142,12 @@
       box-shadow: var(--shadow-sm);
       background: white;
     }
+
     #searchInput:focus {
       border-color: var(--gold);
       box-shadow: 0 4px 15px rgba(200, 169, 126, 0.2);
     }
+
     .search-icon {
       position: absolute;
       left: 1.2rem;
@@ -266,42 +285,50 @@
       transition: all 0.3s ease;
       display: none;
     }
+
     .location-modal.active {
       display: block;
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
+
     .modal-header {
       text-align: center;
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--light-brown);
     }
+
     .modal-title {
       font-size: 1.8rem;
       color: var(--primary-brown);
       font-family: 'Playfair Display', serif;
       margin-bottom: 0.5rem;
     }
+
     .modal-subtitle {
       color: #666;
       font-size: 1rem;
     }
+
     .modal-body {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
     }
+
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
+
     .form-label {
       font-weight: 500;
       color: var(--dark-brown);
       font-size: 0.95rem;
     }
+
     .form-select {
       width: 100%;
       padding: 0.8rem;
@@ -312,10 +339,12 @@
       outline: none;
       transition: all 0.3s;
     }
+
     .form-select:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.2);
     }
+
     .modal-footer {
       display: flex;
       justify-content: flex-end;
@@ -324,6 +353,7 @@
       border-top: 1px solid var(--light-brown);
       gap: 1rem;
     }
+
     .btn {
       padding: 0.8rem 1.5rem;
       border-radius: 25px;
@@ -337,21 +367,25 @@
       align-items: center;
       gap: 8px;
     }
+
     .btn-primary {
       background: var(--primary-brown);
       color: white;
       box-shadow: var(--shadow-sm);
     }
+
     .btn-primary:hover {
       background: var(--dark-brown);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
+
     .btn-secondary {
       background: transparent;
       color: var(--dark-brown);
       border: 2px solid var(--light-brown);
     }
+
     .btn-secondary:hover {
       background: var(--light-brown);
       border-color: var(--gold);
@@ -366,6 +400,7 @@
       overflow: hidden;
       margin-top: 80px;
     }
+
     .video-container {
       position: absolute;
       top: 0;
@@ -374,16 +409,19 @@
       height: 100%;
       display: flex;
     }
+
     .video-panel {
       flex: 1;
       position: relative;
       overflow: hidden;
     }
+
     .video-panel video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .video-overlay {
       position: absolute;
       top: 0;
@@ -395,12 +433,15 @@
       align-items: center;
       justify-content: center;
     }
+
     .meat-panel .video-overlay {
-      background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     }
+
     .milk-panel .video-overlay {
-      background: linear-gradient(to left, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
@@ -414,6 +455,7 @@
       justify-content: center;
       height: 100%;
     }
+
     .hero-title {
       font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 700;
@@ -421,8 +463,9 @@
       color: white;
       font-family: 'Playfair Display', serif;
       line-height: 1.1;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
     .hero-subtitle {
       font-size: clamp(1.1rem, 2.5vw, 1.4rem);
       margin-bottom: 2.5rem;
@@ -431,31 +474,36 @@
       margin-left: auto;
       margin-right: auto;
       font-weight: 400;
-      text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
     }
+
     .hero-btns {
       display: flex;
       gap: 1.5rem;
       justify-content: center;
       flex-wrap: wrap;
     }
+
     .btn-primary {
       background: var(--primary-brown);
       color: white;
       border: 2px solid var(--primary-brown);
       box-shadow: 0 4px 15px rgba(98, 69, 28, 0.3);
     }
+
     .btn-primary:hover {
       background: var(--dark-brown);
       border-color: var(--dark-brown);
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(98, 69, 28, 0.4);
     }
+
     .btn-secondary {
       background: transparent;
       color: white;
       border: 2px solid white;
     }
+
     .btn-secondary:hover {
       background: white;
       color: var(--primary-brown);
@@ -469,6 +517,7 @@
       background: white;
       position: relative;
     }
+
     .bags-title {
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 1rem;
@@ -478,6 +527,7 @@
       position: relative;
       padding-bottom: 20px;
     }
+
     .bags-title::after {
       content: '';
       position: absolute;
@@ -488,6 +538,7 @@
       height: 3px;
       background: var(--gold);
     }
+
     .bags-subtitle {
       text-align: center;
       color: #666;
@@ -497,19 +548,23 @@
       margin-right: auto;
       font-size: 1.1rem;
     }
+
     .slider-container {
       position: relative;
       max-width: 1400px;
       margin: 0 auto;
     }
+
     .slider {
       overflow: hidden;
     }
+
     .slider-track {
       display: flex;
       transition: transform 0.3s ease;
       gap: 2rem;
     }
+
     .bag-card {
       flex: 0 0 280px;
       background: white;
@@ -524,10 +579,12 @@
       position: relative;
       border: 1px solid rgba(232, 225, 213, 0.5);
     }
+
     .bag-card:hover {
       transform: translateY(-12px);
       box-shadow: var(--shadow-lg);
     }
+
     .bag-card::before {
       content: '';
       position: absolute;
@@ -539,9 +596,11 @@
       transform: scaleX(0);
       transition: transform 0.5s;
     }
+
     .bag-card:hover::before {
       transform: scaleX(1);
     }
+
     .bag-image {
       width: 120px;
       height: 120px;
@@ -549,19 +608,22 @@
       border-radius: 10px;
       margin-bottom: 1.5rem;
       border: 3px solid var(--light-brown);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
     }
+
     .bag-card:hover .bag-image {
       transform: scale(1.05);
       border-color: var(--gold);
     }
+
     .bag-price {
       color: var(--dark-brown);
       font-size: 1.3rem;
       font-weight: bold;
       margin-bottom: 1.5rem;
     }
+
     .add-cart-btn {
       background: var(--primary-brown);
       color: white;
@@ -581,16 +643,18 @@
       gap: 8px;
       box-shadow: 0 4px 10px rgba(98, 69, 28, 0.2);
     }
+
     .add-cart-btn:hover {
       background: var(--dark-brown);
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(98, 69, 28, 0.3);
     }
+
     .slider-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.9);
       border: none;
       width: 50px;
       height: 50px;
@@ -602,14 +666,17 @@
       transition: all 0.3s;
       z-index: 10;
     }
+
     .slider-btn:hover {
       background: white;
       box-shadow: var(--shadow-md);
       transform: translateY(-50%) scale(1.1);
     }
+
     .prev-btn {
       left: 10px;
     }
+
     .next-btn {
       right: 10px;
     }
@@ -620,6 +687,7 @@
       background: white;
       position: relative;
     }
+
     .section-title {
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 1rem;
@@ -629,6 +697,7 @@
       position: relative;
       padding-bottom: 20px;
     }
+
     .section-title::after {
       content: '';
       position: absolute;
@@ -639,6 +708,7 @@
       height: 3px;
       background: var(--gold);
     }
+
     .section-subtitle {
       text-align: center;
       color: #666;
@@ -648,6 +718,7 @@
       margin-right: auto;
       font-size: 1.1rem;
     }
+
     .category-tabs {
       display: flex;
       justify-content: center;
@@ -655,6 +726,7 @@
       margin-bottom: 50px;
       flex-wrap: wrap;
     }
+
     .category-tab {
       background: white;
       border: 1px solid #e8e1d5;
@@ -665,22 +737,26 @@
       transition: all 0.3s;
       color: var(--dark-brown);
     }
+
     .category-tab.active {
       background: var(--primary-brown);
       color: white;
       border-color: var(--primary-brown);
       box-shadow: var(--shadow-sm);
     }
+
     .category-tab:hover:not(.active) {
       border-color: var(--primary-brown);
       color: var(--primary-brown);
     }
+
     .products-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
       justify-content: center;
     }
+
     .product-card {
       background: white;
       border-radius: 20px;
@@ -694,10 +770,12 @@
       position: relative;
       border: 1px solid rgba(232, 225, 213, 0.5);
     }
+
     .product-card:hover {
       transform: translateY(-12px);
       box-shadow: var(--shadow-lg);
     }
+
     .product-card::before {
       content: '';
       position: absolute;
@@ -709,9 +787,11 @@
       transform: scaleX(0);
       transition: transform 0.5s;
     }
+
     .product-card:hover::before {
       transform: scaleX(1);
     }
+
     .product-image {
       width: 120px;
       height: 120px;
@@ -719,13 +799,15 @@
       border-radius: 50%;
       margin-bottom: 1.5rem;
       border: 3px solid var(--light-brown);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
     }
+
     .product-card:hover .product-image {
       transform: scale(1.05);
       border-color: var(--gold);
     }
+
     .product-title {
       font-size: 1.3rem;
       font-weight: 600;
@@ -733,6 +815,7 @@
       text-align: center;
       color: var(--dark-brown);
     }
+
     .product-type {
       font-size: 0.9rem;
       color: var(--primary-brown);
@@ -741,12 +824,14 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
     .product-price {
       color: var(--dark-brown);
       font-size: 1.2rem;
       font-weight: bold;
       margin-bottom: 1.5rem;
     }
+
     .add-cart-btn {
       background: var(--primary-brown);
       color: white;
@@ -766,6 +851,7 @@
       gap: 8px;
       box-shadow: 0 4px 10px rgba(98, 69, 28, 0.2);
     }
+
     .add-cart-btn:hover {
       background: var(--dark-brown);
       transform: translateY(-3px);
@@ -778,12 +864,14 @@
       background: var(--light-brown);
       position: relative;
     }
+
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2.5rem;
       margin-top: 3rem;
     }
+
     .feature-card {
       background: white;
       border-radius: 20px;
@@ -795,6 +883,7 @@
       position: relative;
       overflow: hidden;
     }
+
     .feature-card::before {
       content: '';
       position: absolute;
@@ -806,13 +895,16 @@
       transform: scaleX(0);
       transition: transform 0.5s;
     }
+
     .feature-card:hover::before {
       transform: scaleX(1);
     }
+
     .feature-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
     }
+
     .feature-icon {
       width: 80px;
       height: 80px;
@@ -826,12 +918,14 @@
       font-size: 2rem;
       box-shadow: 0 6px 15px rgba(98, 69, 28, 0.2);
     }
+
     .feature-title {
       font-size: 1.4rem;
       font-weight: 600;
       margin-bottom: 1rem;
       color: var(--dark-brown);
     }
+
     .feature-desc {
       color: #666;
       line-height: 1.7;
@@ -842,16 +936,19 @@
       padding: 6rem 4vw;
       background: white;
     }
+
     .testimonials-container {
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .testimonial-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
     }
+
     .testimonial-card {
       background: var(--light-brown);
       border-radius: 20px;
@@ -860,21 +957,25 @@
       box-shadow: var(--shadow-sm);
       transition: all 0.3s;
     }
+
     .testimonial-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
+
     .testimonial-text {
       font-style: italic;
       margin-bottom: 1.5rem;
       color: var(--dark-brown);
       line-height: 1.7;
     }
+
     .testimonial-author {
       display: flex;
       align-items: center;
       gap: 15px;
     }
+
     .author-avatar {
       width: 50px;
       height: 50px;
@@ -882,11 +983,13 @@
       object-fit: cover;
       border: 2px solid var(--gold);
     }
+
     .author-info h4 {
       font-weight: 600;
       color: var(--primary-brown);
       margin-bottom: 5px;
     }
+
     .author-info p {
       color: #777;
       font-size: 0.9rem;
@@ -898,6 +1001,7 @@
       color: white;
       padding: 4rem 4vw 1.5rem;
     }
+
     .footer-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -907,6 +1011,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     .footer-column h3 {
       font-size: 1.4rem;
       margin-bottom: 1.5rem;
@@ -915,6 +1020,7 @@
       padding-bottom: 12px;
       font-family: 'Playfair Display', serif;
     }
+
     .footer-column h3::after {
       content: '';
       position: absolute;
@@ -924,12 +1030,15 @@
       height: 2px;
       background: var(--gold);
     }
+
     .footer-links {
       list-style: none;
     }
+
     .footer-links li {
       margin-bottom: 12px;
     }
+
     .footer-links a {
       color: #cccccc;
       text-decoration: none;
@@ -938,20 +1047,24 @@
       align-items: center;
       gap: 10px;
     }
+
     .footer-links a:hover {
       color: white;
       transform: translateX(5px);
     }
+
     .footer-links a i {
       width: 20px;
       text-align: center;
       color: var(--gold);
     }
+
     .social-links {
       display: flex;
       gap: 15px;
       margin-top: 1.5rem;
     }
+
     .social-link {
       width: 42px;
       height: 42px;
@@ -963,10 +1076,12 @@
       color: white;
       transition: all 0.3s;
     }
+
     .social-link:hover {
       background: var(--gold);
       transform: translateY(-3px);
     }
+
     .copyright {
       text-align: center;
       padding-top: 2.5rem;
@@ -983,97 +1098,125 @@
       .hero-title {
         font-size: 3.5rem;
       }
+
       .bag-card {
         flex: 0 0 250px;
       }
     }
+
     @media (max-width: 768px) {
       .header-container {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
+
       .logo {
         margin-bottom: 0;
       }
+
       .logo-text {
         display: none;
       }
+
       .nav-links {
         display: none;
       }
+
       .search-container {
-        display: none; /* Hide search on very small screens, or adjust as needed */
+        display: none;
+        /* Hide search on very small screens, or adjust as needed */
       }
+
       .mobile-menu-btn {
         display: block;
       }
+
       .hero {
         height: auto;
         min-height: 600px;
         padding: 4rem 0;
       }
+
       .video-container {
         flex-direction: column;
       }
+
       .video-panel {
         height: 50%;
       }
+
       .hero-btns {
         flex-direction: column;
         align-items: center;
       }
+
       .btn {
         width: 100%;
         max-width: 280px;
         justify-content: center;
       }
+
       .product-card {
         width: 100%;
       }
-      .features-grid, .testimonial-cards {
+
+      .features-grid,
+      .testimonial-cards {
         grid-template-columns: 1fr;
       }
+
       .bag-card {
         flex: 0 0 100%;
       }
+
       .slider-btn {
         width: 40px;
         height: 40px;
         font-size: 1rem;
       }
+
       .location-modal {
         width: 95%;
         padding: 1.5rem;
       }
+
       .modal-title {
         font-size: 1.5rem;
       }
     }
+
     @media (max-width: 480px) {
       .hero-title {
         font-size: 2.2rem;
       }
+
       .hero-subtitle {
         font-size: 1rem;
       }
+
       .products-list {
         grid-template-columns: 1fr;
       }
+
       .category-tabs {
         flex-wrap: wrap;
       }
+
       .category-tab {
         padding: 10px 20px;
         font-size: 0.9rem;
       }
+
       .bag-card {
         padding: 1.5rem 1rem;
       }
+
       .bag-image {
         width: 100px;
         height: 100px;
       }
+
       .side-nav {
         width: 100%;
         right: -100%;
@@ -1081,14 +1224,16 @@
     }
   </style>
 </head>
+
 <body>
-   <div class="overlay" id="modalOverlay"></div>
+  <div class="overlay" id="modalOverlay"></div>
 
   <!-- === Location Modal === -->
   <div class="location-modal" id="locationModal">
     <div class="modal-header">
       <h2 class="modal-title">Select Your Location</h2>
-      <p class="modal-subtitle">To provide the best delivery experience, please select your state and city in the UAE.</p>
+      <p class="modal-subtitle">To provide the best delivery experience, please select your state and city in the UAE.
+      </p>
     </div>
     <div class="modal-body">
       <div class="form-group">
@@ -1122,13 +1267,17 @@
         <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" />
       </div>
       <nav class="nav-links">
-        <a href="#">Home</a>
+        <a href="/home">Home</a>
         <a href="/all-products">Products</a>
         <a href="/subscription">Subscription</a>
         <a href="#features">Features</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="cart-header" href="/cart" aria-label="Open cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
     </div>
   </header>
 
@@ -1152,7 +1301,8 @@
     </div>
     <div class="hero-content">
       <h1 class="hero-title">Premium Quality Meat & Dairy</h1>
-      <p class="hero-subtitle">Experience the finest selection of farm-fresh products, carefully sourced and delivered to your doorstep with uncompromising quality.</p>
+      <p class="hero-subtitle">Experience the finest selection of farm-fresh products, carefully sourced and delivered
+        to your doorstep with uncompromising quality.</p>
       <div class="hero-btns">
         <a href="#products" class="btn btn-primary">
           <i class="fas fa-shopping-basket"></i> Shop Now
@@ -1170,62 +1320,68 @@
     <p class="section-subtitle">
       Carefully curated products that meet our stringent quality standards for freshness and taste
     </p>
-    
+
     <div class="category-tabs">
       <div class="category-tab active" onclick="filterByCategory('all')">All Products</div>
       <div class="category-tab" onclick="filterByCategory('meat')">Meat Selection</div>
       <div class="category-tab" onclick="filterByCategory('dairy')">Dairy Products</div>
     </div>
-    
+
     <div class="products-list" id="productsList">
       <!-- Meat Products -->
-        @foreach ($products as $product)
-      <div class="product-card" data-title="{{ strtolower($product->product_name) }}" 
-     data-type="{{ strtolower($product->category->name) }}">
-        <img src="{{ asset('images/product_images/' . $product->featured_image) }}" alt="{{ $product->product_name }}" class="product-image" />
-        <h3 class="product-title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a></h3>
-        <div class="product-type">{{ ucfirst($product->category->name) }}</div>
-         @if($product->variant_type == 'simple')
-         <div class="product-price">AED {{ $product->s_price }}/{{$product->s_weight}} {{$product->Sunit->name}}</div>
-        @else
-        <div class="product-price">From AED {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }} {{$product->unit->name}} </div>
-        @endif
-        <button class="add-cart-btn">
-          <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-      </div>
+      @foreach ($products as $product)
+        <div class="product-card" data-title="{{ strtolower($product->product_name) }}"
+          data-type="{{ strtolower($product->category->name) }}">
+          <img src="{{ asset('images/product_images/' . $product->featured_image) }}" alt="{{ $product->product_name }}"
+            class="product-image" />
+          <h3 class="product-title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
+          </h3>
+          <div class="product-type">{{ ucfirst($product->category->name) }}</div>
+          @if($product->variant_type == 'simple')
+            <div class="product-price">AED {{ $product->s_price }}/{{$product->s_weight}} {{$product->Sunit->name}}</div>
+          @else
+            <div class="product-price">From AED
+              {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }}
+              {{$product->unit->name}}
+            </div>
+          @endif
+          <button class="add-cart-btn" onclick="addToCart(${p.id})">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
       @endforeach
-      
-     
+
+
   </section>
 
   <!-- === Premium Bags Section === -->
-<section id="bags" class="bags">
-  <h2 class="bags-title">Premium Backet</h2>
-  <p class="bags-subtitle">Choose a bag value to shop up to that amount in meat and dairy products. Fill your bag with fresh quality!</p>
-  
-  <div class="slider-container">
-    <div class="slider">
-      <div class="slider-track" id="sliderTrack">
-        @foreach($bags as $bag)
-        <div class="bag-card">
-          <img src="{{ asset('Assets/bag.jpeg') }}" alt="Premium Bag ₹{{ $bag->price }}" class="bag-image" />
-          <div class="bag-price">{{ $bag->name }}</div>
-           <a href="/baskets/{{ $bag->id }}" style="text-decoration: none;"><button class="add-cart-btn">
-           <i class="fas fa-cart-plus"></i> Purchase</button></a>
+  <section id="bags" class="bags">
+    <h2 class="bags-title">Premium Backet</h2>
+    <p class="bags-subtitle">Choose a bag value to shop up to that amount in meat and dairy products. Fill your bag with
+      fresh quality!</p>
+
+    <div class="slider-container">
+      <div class="slider">
+        <div class="slider-track" id="sliderTrack">
+          @foreach($bags as $bag)
+            <div class="bag-card">
+              <img src="{{ asset('Assets/bag.jpeg') }}" alt="Premium Bag ₹{{ $bag->price }}" class="bag-image" />
+              <div class="bag-price">{{ $bag->name }}</div>
+              <a href="/baskets/{{ $bag->id }}" style="text-decoration: none;"><button class="add-cart-btn">
+                  <i class="fas fa-cart-plus"></i> Purchase</button></a>
+            </div>
+          @endforeach
+
         </div>
-        @endforeach
-       
       </div>
+      <button class="slider-btn prev-btn" id="prevBtn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-btn next-btn" id="nextBtn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
-    <button class="slider-btn prev-btn" id="prevBtn">
-      <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="slider-btn next-btn" id="nextBtn">
-      <i class="fas fa-chevron-right"></i>
-    </button>
-  </div>
-</section>
+  </section>
 
   <!-- === Features Section === -->
   <section class="features" id="features">
@@ -1233,38 +1389,42 @@
     <p class="section-subtitle">
       We are committed to excellence in every aspect of our service and products
     </p>
-    
+
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">
           <i class="fas fa-award"></i>
         </div>
         <h3 class="feature-title">Premium Quality</h3>
-        <p class="feature-desc">All our products undergo rigorous quality checks to ensure they meet the highest standards of freshness and taste.</p>
+        <p class="feature-desc">All our products undergo rigorous quality checks to ensure they meet the highest
+          standards of freshness and taste.</p>
       </div>
-      
+
       <div class="feature-card">
         <div class="feature-icon">
           <i class="fas fa-truck"></i>
         </div>
         <h3 class="feature-title">Fast Delivery</h3>
-        <p class="feature-desc">We deliver fresh products to your doorstep within 24 hours of ordering with our temperature-controlled logistics.</p>
+        <p class="feature-desc">We deliver fresh products to your doorstep within 24 hours of ordering with our
+          temperature-controlled logistics.</p>
       </div>
-      
+
       <div class="feature-card">
         <div class="feature-icon">
           <i class="fas fa-leaf"></i>
         </div>
         <h3 class="feature-title">Natural & Fresh</h3>
-        <p class="feature-desc">Our products are sourced from trusted farms with no artificial additives, preservatives, or hormones.</p>
+        <p class="feature-desc">Our products are sourced from trusted farms with no artificial additives, preservatives,
+          or hormones.</p>
       </div>
-      
+
       <div class="feature-card">
         <div class="feature-icon">
           <i class="fas fa-headset"></i>
         </div>
         <h3 class="feature-title">24/7 Support</h3>
-        <p class="feature-desc">Our dedicated customer support team is available round the clock to assist you with any queries or concerns.</p>
+        <p class="feature-desc">Our dedicated customer support team is available round the clock to assist you with any
+          queries or concerns.</p>
       </div>
     </div>
   </section>
@@ -1276,10 +1436,12 @@
       <p class="section-subtitle">
         Don't just take our word for it - hear from our satisfied customers
       </p>
-      
+
       <div class="testimonial-cards">
         <div class="testimonial-card">
-          <p class="testimonial-text">"The quality of meat from Royal Fresh is exceptional. I've been a customer for over two years and have never been disappointed. Their delivery is always on time and the products are consistently fresh."</p>
+          <p class="testimonial-text">"The quality of meat from Royal Fresh is exceptional. I've been a customer for
+            over two years and have never been disappointed. Their delivery is always on time and the products are
+            consistently fresh."</p>
           <div class="testimonial-author">
             <img src="{{asset('Assets/customer1.jpg')}}" alt="Customer" class="author-avatar" />
             <div class="author-info">
@@ -1288,9 +1450,11 @@
             </div>
           </div>
         </div>
-        
+
         <div class="testimonial-card">
-          <p class="testimonial-text">"As a restaurant owner, I rely on Royal Fresh for all my meat and dairy supplies. Their consistent quality and reliable delivery have helped me maintain the standards my customers expect."</p>
+          <p class="testimonial-text">"As a restaurant owner, I rely on Royal Fresh for all my meat and dairy supplies.
+            Their consistent quality and reliable delivery have helped me maintain the standards my customers expect."
+          </p>
           <div class="testimonial-author">
             <img src="{{asset('Assets/customer2.jpg')}}" alt="Customer" class="author-avatar" />
             <div class="author-info">
@@ -1299,9 +1463,11 @@
             </div>
           </div>
         </div>
-        
+
         <div class="testimonial-card">
-          <p class="testimonial-text">"The milk from Royal Fresh tastes exactly like it did when I was a child - pure and unadulterated. My family won't drink milk from anywhere else now. Thank you for bringing back real taste!"</p>
+          <p class="testimonial-text">"The milk from Royal Fresh tastes exactly like it did when I was a child - pure
+            and unadulterated. My family won't drink milk from anywhere else now. Thank you for bringing back real
+            taste!"</p>
           <div class="testimonial-author">
             <img src="{{asset('Assets/customer3.jpg')}}" alt="Customer" class="author-avatar" />
             <div class="author-info">
@@ -1319,7 +1485,8 @@
     <div class="footer-container">
       <div class="footer-column">
         <h3>Royal Fresh</h3>
-        <p>Premium quality meat and dairy products delivered fresh to your doorstep across India since 1997. Experience the difference that quality makes.</p>
+        <p>Premium quality meat and dairy products delivered fresh to your doorstep across India since 1997. Experience
+          the difference that quality makes.</p>
         <div class="social-links">
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -1327,7 +1494,7 @@
           <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
-      
+
       <div class="footer-column">
         <h3>Quick Links</h3>
         <ul class="footer-links">
@@ -1338,7 +1505,7 @@
           <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-column">
         <h3>Contact Info</h3>
         <ul class="footer-links">
@@ -1349,9 +1516,10 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="copyright">
-      © 2025 Royal Fresh. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--gold);"></i> for discerning customers
+      © 2025 Royal Fresh. All rights reserved. | Crafted with <i class="fas fa-heart" style="color: var(--gold);"></i>
+      for discerning customers
     </div>
   </footer>
 
@@ -1362,7 +1530,31 @@
 
   <script>
 
-   const uaeData = {
+    function addToCart(id) {
+      const card = document.querySelector(`[data-id="${id}"]`);
+
+      const item = {
+        id,
+        title: card.querySelector(".product-title").textContent,
+        price: Number(card.querySelector(".product-price").textContent.replace("AED", "")),
+        weight: card.querySelector(".product-weight").value,
+        quantity: Number(card.querySelector("input").value),
+        image: card.querySelector(".product-image").src
+      };
+
+      let existing = cart.find(c => c.id === item.id && c.weight === item.weight);
+
+      if (existing) {
+        existing.quantity += item.quantity;
+      } else {
+        cart.push(item);
+      }
+
+      saveCart();
+      renderCart();
+    }
+
+    const uaeData = {
       "Abu Dhabi": [
         "Abu Dhabi City", "Al Ain", "Liwa Oasis", "Zayed City", "Al Shahama"
       ],
@@ -1387,7 +1579,7 @@
     };
 
     // Initialize Lucide Icons
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       lucide.createIcons();
 
       // Show modal on load
@@ -1440,7 +1632,7 @@
     }
 
     // State Change Handler
-    $('#stateSelect').on('change', function() {
+    $('#stateSelect').on('change', function () {
       const selectedState = $(this).val();
       const citySelect = $('#citySelect');
       const continueBtn = document.getElementById('continueBtn');
@@ -1461,14 +1653,14 @@
     });
 
     // City Change Handler
-    $('#citySelect').on('change', function() {
+    $('#citySelect').on('change', function () {
       const selectedCity = $(this).val();
       const continueBtn = document.getElementById('continueBtn');
       continueBtn.disabled = !selectedCity;
     });
 
     // Continue Button Handler
-    document.getElementById('continueBtn').addEventListener('click', function() {
+    document.getElementById('continueBtn').addEventListener('click', function () {
       const state = $('#stateSelect').val();
       const city = $('#citySelect').val();
       if (state && city) {
@@ -1514,7 +1706,7 @@
     });
 
     // Header scroll effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const header = document.getElementById('mainHeader');
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -1555,11 +1747,11 @@
     function filterByCategory(category) {
       const cards = document.querySelectorAll('.product-card');
       const tabs = document.querySelectorAll('.category-tab');
-      
+
       // Update active tab
       tabs.forEach(tab => tab.classList.remove('active'));
       event.target.classList.add('active');
-      
+
       // Show/hide products based on category
       cards.forEach(card => {
         if (category === 'all' || card.getAttribute('data-type') === category) {
@@ -1596,4 +1788,5 @@
     });
   </script>
 </body>
+
 </html>

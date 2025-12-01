@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Royal Fresh – Premium Products</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -18,11 +21,13 @@
       --shadow-md: 0 4px 20px rgba(98, 69, 28, 0.12);
       --shadow-lg: 0 8px 30px rgba(98, 69, 28, 0.15);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--cream);
@@ -42,11 +47,13 @@
       padding: 1rem 4vw;
       transition: all 0.3s ease;
     }
+
     header.scrolled {
       padding: 0.7rem 4vw;
       background: rgba(255, 249, 240, 0.98);
       backdrop-filter: blur(10px);
     }
+
     .header-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -56,6 +63,7 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -65,14 +73,17 @@
       font-size: 1.6rem;
       font-family: 'Playfair Display', serif;
     }
+
     .logo img {
       height: 42px;
       margin-right: 12px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
+
     .logo-text {
       display: inline;
     }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -80,6 +91,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .nav-links a {
       text-decoration: none;
       color: var(--dark-brown);
@@ -89,9 +101,11 @@
       padding: 0.5rem 0;
       position: relative;
     }
+
     .nav-links a:hover {
       color: var(--primary-brown);
     }
+
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -102,9 +116,11 @@
       background-color: var(--primary-brown);
       transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
     .nav-links a:hover::after {
       width: 100%;
     }
+
     .search-container {
       flex: 1;
       min-width: 240px;
@@ -112,6 +128,7 @@
       margin: 0 1.5rem;
       position: relative;
     }
+
     #searchInput {
       width: 100%;
       padding: 0.8rem 1.2rem 0.8rem 3rem;
@@ -123,10 +140,12 @@
       box-shadow: var(--shadow-sm);
       background: white;
     }
+
     #searchInput:focus {
       border-color: var(--gold);
       box-shadow: 0 4px 15px rgba(200, 169, 126, 0.2);
     }
+
     .search-icon {
       position: absolute;
       left: 1.2rem;
@@ -261,6 +280,7 @@
       margin-top: 100px;
       padding: 2rem 4vw;
     }
+
     .container {
       max-width: 1600px;
       margin: 0 auto;
@@ -281,6 +301,7 @@
       top: 120px;
       overflow-y: auto;
     }
+
     .filter-header {
       display: flex;
       justify-content: space-between;
@@ -289,61 +310,74 @@
       padding-bottom: 12px;
       border-bottom: 2px solid var(--gold);
     }
+
     .filter-sidebar::-webkit-scrollbar {
       width: 6px;
     }
+
     .filter-sidebar::-webkit-scrollbar-track {
       background: var(--light-brown);
       border-radius: 10px;
     }
+
     .filter-sidebar::-webkit-scrollbar-thumb {
       background: var(--gold);
       border-radius: 10px;
     }
+
     .filter-sidebar h3 {
       font-size: 1.5rem;
       color: var(--primary-brown);
       margin: 0;
       font-family: 'Playfair Display', serif;
     }
+
     .filter-group {
       margin-bottom: 2rem;
     }
+
     .filter-group h4 {
       font-size: 1.1rem;
       color: var(--dark-brown);
       margin-bottom: 1rem;
       font-weight: 600;
     }
+
     .filter-options {
       display: flex;
       flex-direction: column;
       gap: 0.8rem;
     }
+
     .filter-option {
       display: flex;
       align-items: center;
       gap: 0.8rem;
     }
+
     .filter-option input[type="checkbox"] {
       accent-color: var(--gold);
       width: 18px;
       height: 18px;
     }
+
     .filter-option label {
       font-size: 0.95rem;
       color: var(--dark-brown);
       cursor: pointer;
     }
+
     .price-range {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
+
     .price-inputs {
       display: flex;
       gap: 0.8rem;
     }
+
     .price-inputs input {
       width: 100%;
       border: 1.5px solid var(--light-brown);
@@ -355,10 +389,12 @@
       outline: none;
       transition: all 0.3s;
     }
+
     .price-inputs input:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.2);
     }
+
     .price-slider {
       width: 100%;
       height: 6px;
@@ -367,6 +403,7 @@
       outline: none;
       -webkit-appearance: none;
     }
+
     .price-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 20px;
@@ -374,18 +411,21 @@
       border-radius: 50%;
       background: var(--gold);
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       transition: all 0.3s;
     }
+
     .price-slider::-webkit-slider-thumb:hover {
       background: var(--primary-brown);
       transform: scale(1.1);
     }
+
     .filter-buttons {
       display: flex;
       gap: 1rem;
       margin-top: 1rem;
     }
+
     .filter-btn {
       flex: 1;
       padding: 0.9rem 0;
@@ -396,64 +436,75 @@
       font-size: 1rem;
       border: none;
     }
+
     .apply-btn {
       background: var(--primary-brown);
       color: white;
       box-shadow: var(--shadow-sm);
     }
+
     .reset-btn {
       background: transparent;
       color: var(--dark-brown);
       border: 1.5px solid var(--light-brown);
     }
+
     .apply-btn:hover {
       background: var(--dark-brown);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
+
     .reset-btn:hover {
       background: var(--light-brown);
       border-color: var(--gold);
     }
 
- /* Animal Filter Styles*/
-.animal-filters {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
-}
-.animal-label {
-  cursor: pointer;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  padding: 4px;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.animal-label:hover {
-  border-color: var(--gold);
-}
-.animal-label.selected {
-  border: 3px solid var(--primary-brown);
-  box-shadow: var(--shadow-sm);
-}
-.animal-checkbox {
-  display: none;
-}
-.animal-image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-  
-}
+    /* Animal Filter Styles*/
+    .animal-filters {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+
+    .animal-label {
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 4px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .animal-label:hover {
+      border-color: var(--gold);
+    }
+
+    .animal-label.selected {
+      border: 3px solid var(--primary-brown);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .animal-checkbox {
+      display: none;
+    }
+
+    .animal-image {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+
+    }
+
     /* === Products Container === */
     .products-container {
       flex: 1;
     }
+
     .category-section {
       border-radius: 20px;
       margin-bottom: 3rem;
@@ -462,11 +513,13 @@
       background: white;
       border: 1px solid rgba(232, 225, 213, 0.5);
     }
+
     .category-header {
       text-align: center;
       margin-bottom: 2.5rem;
       position: relative;
     }
+
     .category-title {
       font-size: 2.2rem;
       font-weight: 700;
@@ -477,6 +530,7 @@
       display: inline-block;
       padding-bottom: 10px;
     }
+
     .category-title::after {
       content: '';
       position: absolute;
@@ -495,6 +549,7 @@
       gap: 2rem;
       margin-bottom: 1.5rem;
     }
+
     .product-card {
       background: white;
       border-radius: 20px;
@@ -508,10 +563,12 @@
       position: relative;
       border: 1px solid rgba(232, 225, 213, 0.5);
     }
+
     .product-card:hover {
       transform: translateY(-12px);
       box-shadow: var(--shadow-lg);
     }
+
     .product-card::before {
       content: '';
       position: absolute;
@@ -523,9 +580,11 @@
       transform: scaleX(0);
       transition: transform 0.5s;
     }
+
     .product-card:hover::before {
       transform: scaleX(1);
     }
+
     .product-image {
       width: 140px;
       height: 140px;
@@ -533,13 +592,15 @@
       border-radius: 50%;
       margin-bottom: 1.5rem;
       border: 3px solid var(--light-brown);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
     }
+
     .product-card:hover .product-image {
       transform: scale(1.05);
       border-color: var(--gold);
     }
+
     .product-title {
       font-size: 1.3rem;
       font-weight: 600;
@@ -553,12 +614,14 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
+
     .product-price {
       color: var(--dark-brown);
       font-size: 1.3rem;
       font-weight: bold;
       margin-bottom: 1rem;
     }
+
     .product-weight-label {
       font-weight: 500;
       font-size: 0.95rem;
@@ -568,6 +631,7 @@
       align-items: center;
       gap: 0.5rem;
     }
+
     select.product-weight {
       border-radius: 8px;
       padding: 0.5rem 0.8rem;
@@ -580,10 +644,13 @@
       transition: all 0.3s;
       cursor: pointer;
     }
-    select.product-weight:hover, select.product-weight:focus {
+
+    select.product-weight:hover,
+    select.product-weight:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.2);
     }
+
     .quantity-controls {
       display: flex;
       align-items: center;
@@ -591,6 +658,7 @@
       margin: 1rem 0 1.2rem 0;
       justify-content: center;
     }
+
     .quantity-controls button {
       background: var(--primary-brown);
       border: none;
@@ -609,10 +677,12 @@
       align-items: center;
       justify-content: center;
     }
+
     .quantity-controls button:hover {
       background: var(--dark-brown);
       transform: translateY(-2px);
     }
+
     .quantity-controls input {
       width: 50px;
       border: 1.5px solid var(--light-brown);
@@ -627,10 +697,12 @@
       user-select: none;
       transition: all 0.3s;
     }
+
     .quantity-controls input:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.2);
     }
+
     .add-cart-btn {
       background: var(--primary-brown);
       color: white;
@@ -650,6 +722,7 @@
       gap: 8px;
       box-shadow: 0 4px 10px rgba(98, 69, 28, 0.2);
     }
+
     .add-cart-btn:hover {
       background: var(--dark-brown);
       transform: translateY(-3px);
@@ -662,65 +735,82 @@
         grid-template-columns: repeat(3, 1fr);
       }
     }
+
     @media (max-width: 1200px) {
       .products-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
     @media (max-width: 1024px) {
       .container {
         flex-direction: column;
         padding: 0;
       }
+
       .filter-sidebar {
         width: 100%;
         position: static;
         height: auto;
         max-height: 400px;
       }
+
       .products-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
       }
     }
+
     @media (max-width: 768px) {
       .header-container {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
+
       .logo {
         margin-bottom: 0;
       }
+
       .logo-text {
         display: none;
       }
+
       .nav-links {
         display: none;
       }
+
       .search-container {
-        display: none; /* Hide search on very small screens, or adjust as needed */
+        display: none;
+        /* Hide search on very small screens, or adjust as needed */
       }
+
       .mobile-menu-btn {
         display: block;
       }
+
       .mobile-filter-btn {
         display: block;
       }
+
       .main-content {
         margin-top: 140px;
         padding: 1rem 2vw;
       }
+
       .products-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
       .category-section {
         padding: 2rem 1.5rem;
       }
+
       .side-nav {
         width: 100%;
         right: -100%;
       }
+
       .filter-sidebar {
         position: fixed;
         top: 100px;
@@ -738,27 +828,33 @@
         max-height: none;
         overflow-y: auto;
       }
+
       .filter-sidebar.open {
         transform: translateX(0);
       }
+
       /* Updated for 2 images per row on mobile */
       .animal-label {
         flex: 0 0 calc(50% - 0.5rem);
       }
     }
+
     @media (max-width: 480px) {
       .products-grid {
         grid-template-columns: 1fr;
       }
+
       .category-title {
         font-size: 1.8rem;
       }
+
       .animal-label {
         flex: 0 0 calc(50% - 0.5rem);
       }
     }
-    </style>
+  </style>
 </head>
+
 <body>
   <!-- === Premium Header === -->
   <header id="mainHeader">
@@ -774,10 +870,15 @@
       <nav class="nav-links">
         <a href="/home">Home</a>
         <a href="/all-products">Products</a>
+        <a href="/subscription">Subscription</a>
         <a href="#features">Features</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="cart-header" href="/cart" aria-label="Open cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
     </div>
   </header>
 
@@ -788,32 +889,32 @@
       <aside class="filter-sidebar">
         <h3>Filter Products</h3>
         <form id="filterForm">
-        
-        <div class="filter-group">
-          <h4>Categories</h4>
-          <div class="filter-options">
-             @foreach($categories as $category)
-            <div class="filter-option">
-               <input type="checkbox" name="categories[]" value="{{ $category->id }}">
-              <label for="{{ $category->name }}">{{ $category->name }}</label>
+
+          <div class="filter-group">
+            <h4>Categories</h4>
+            <div class="filter-options">
+              @foreach($categories as $category)
+                <div class="filter-option">
+                  <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                  <label for="{{ $category->name }}">{{ $category->name }}</label>
+                </div>
+              @endforeach
+
             </div>
-            @endforeach
-           
           </div>
-        </div>
-        
-        <div class="filter-group">
-          <h4>Price Range</h4>
-          <div class="price-range">
-            <div class="price-inputs">
-              <input type="number" name="min_price" placeholder="Min">
+
+          <div class="filter-group">
+            <h4>Price Range</h4>
+            <div class="price-range">
+              <div class="price-inputs">
+                <input type="number" name="min_price" placeholder="Min">
                 <input type="number" name="max_price" placeholder="Max">
+              </div>
+              <!-- <input type="range" class="price-slider" min="0" max="100" value="100"> -->
             </div>
-            <!-- <input type="range" class="price-slider" min="0" max="100" value="100"> -->
           </div>
-        </div>
-        
-        <!-- <div class="filter-group">
+
+          <!-- <div class="filter-group">
           <h4>Weight Options</h4>
           <div class="filter-options">
             <div class="filter-option">
@@ -842,8 +943,8 @@
             </div>
           </div>
         </div> -->
-        
-        <!-- <div class="filter-group">
+
+          <!-- <div class="filter-group">
           <h4>Availability</h4>
           <div class="filter-options">
             <div class="filter-option">
@@ -856,97 +957,99 @@
             </div>
           </div>
         </div> -->
-        
-        <div class="filter-group">
-          <h4>Ratings</h4>
-          <div class="filter-options">
-            <div class="filter-option">
-              <input type="checkbox" id="rating5">
-              <label for="rating5">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </label>
+
+          <div class="filter-group">
+            <h4>Ratings</h4>
+            <div class="filter-options">
+              <div class="filter-option">
+                <input type="checkbox" id="rating5">
+                <label for="rating5">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="rating4">
+                <label for="rating4">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i> & above
+                </label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="rating3">
+                <label for="rating3">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i> & above
+                </label>
+              </div>
             </div>
-            <div class="filter-option">
-              <input type="checkbox" id="rating4">
-              <label for="rating4">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i> & above
+          </div>
+          <div class="filter-group">
+            <div class="filter-options animal-filters">
+              <label class="animal-label">
+                <input type="checkbox" class="animal-checkbox" value="cow" name="filter_cat[]">
+                <img src="{{asset('Assets/filteration_images/cow_filteration.png')}}" alt="Cow" class="animal-image">
               </label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="rating3">
-              <label for="rating3">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i> & above
+              <label class="animal-label">
+                <input type="checkbox" class="animal-checkbox" value="goat" name="filter_cat[]">
+                <img src="{{asset('Assets/filteration_images/goat_filteration.png')}}" alt="Goat" class="animal-image">
+              </label>
+              <label class="animal-label">
+                <input type="checkbox" class="animal-checkbox" value="camel" name="filter_cat[]">
+                <img src="{{asset('Assets/filteration_images/camel_filteration.png')}}" alt="Camel"
+                  class="animal-image">
+              </label>
+              <label class="animal-label">
+                <input type="checkbox" class="animal-checkbox" value="hen" name="filter_cat[]">
+                <img src="{{asset('Assets/filteration_images/hen_filteration.png')}}" alt="Hen" class="animal-image">
+              </label>
+              <label class="animal-label">
+                <input type="checkbox" class="animal-checkbox" value="buffalo" name="filter_cat[]">
+                <img src="{{asset('Assets/filteration_images/buffalo_filteration.png')}}" alt="Buffalo"
+                  class="animal-image">
+              </label>
+              <label class="animal-label">
+                <input type="checkbox" class="animal-checkbox" value="sea_food" name="filter_cat[]">
+                <img src="{{asset('Assets/filteration_images/fish_filteration.png')}}" alt="fish" class="animal-image">
               </label>
             </div>
           </div>
-        </div>
-        <div class="filter-group">
-        <div class="filter-options animal-filters">
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="cow" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/cow_filteration.png')}}" alt="Cow" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="goat" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/goat_filteration.png')}}" alt="Goat" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="camel" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/camel_filteration.png')}}" alt="Camel" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="hen" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/hen_filteration.png')}}" alt="Hen" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="buffalo" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/buffalo_filteration.png')}}" alt="Buffalo" class="animal-image">
-          </label>
-           <label class="animal-label">
-              <input type="checkbox" class="animal-checkbox" value="sea_food" name="filter_cat[]">
-              <img src="{{asset('Assets/filteration_images/fish_filteration.png')}}" alt="fish" class="animal-image">
-            </label>
-        </div>
-      </div>
-        
-        <div class="filter-buttons">
-          <button type="submit" class="filter-btn apply-btn">Apply Filters</button>
-          <button type="reset" class="filter-btn reset-btn">Reset</button>
-        </div>
+
+          <div class="filter-buttons">
+            <button type="submit" class="filter-btn apply-btn">Apply Filters</button>
+            <button type="reset" class="filter-btn reset-btn">Reset</button>
+          </div>
         </form>
       </aside>
-      
+
       <!-- Products Container -->
-     
-        
-<main class="products-container" id="product-list">
-    @include('front.partials.products', ['products' => $category->products])
-</main>
-
-          
-      
 
 
-       
+      <main class="products-container" id="product-list">
+        @include('front.partials.products', ['products' => $category->products])
+      </main>
+
+
+
+
+
+
       </main>
     </div>
   </div>
 
   <script>
     // Header scroll effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const header = document.getElementById('mainHeader');
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -988,95 +1091,96 @@
       });
     });
 
-// document.getElementById('filterForm').addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     let formData = new FormData(this);
+    // document.getElementById('filterForm').addEventListener('submit', function(e) {
+    //     e.preventDefault();
+    //     let formData = new FormData(this);
 
-//     fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
-//         headers: { 'X-Requested-With': 'XMLHttpRequest' }
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//         document.getElementById('product-list').innerHTML = data.html;
-//     });
-// });
+    //     fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
+    //         headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         document.getElementById('product-list').innerHTML = data.html;
+    //     });
+    // });
 
 
-const filterForm = document.getElementById('filterForm');
-const productList = document.getElementById('product-list');
+    const filterForm = document.getElementById('filterForm');
+    const productList = document.getElementById('product-list');
 
-// Apply filters
-filterForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    fetchProducts(new FormData(this));
-});
+    // Apply filters
+    filterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      fetchProducts(new FormData(this));
+    });
 
-// Reset filters
-document.querySelector('.reset-btn').addEventListener('click', function(e) {
-    e.preventDefault(); // prevent full page reload
+    // Reset filters
+    document.querySelector('.reset-btn').addEventListener('click', function (e) {
+      e.preventDefault(); // prevent full page reload
 
-    filterForm.reset(); // clear all inputs
-    document.querySelectorAll('.animal-checkbox').forEach(cb => {
+      filterForm.reset(); // clear all inputs
+      document.querySelectorAll('.animal-checkbox').forEach(cb => {
         cb.checked = false;
-    });
+      });
 
-    // ✅ Remove active/selected CSS state from all labels or images
-    document.querySelectorAll('.animal-label, .animal-image').forEach(el => {
-        el.classList.remove('active', 'selected', 'checked', 'highlight'); 
-    });
+      // ✅ Remove active/selected CSS state from all labels or images
+      document.querySelectorAll('.animal-label, .animal-image').forEach(el => {
+        el.classList.remove('active', 'selected', 'checked', 'highlight');
+      });
 
-    // Fetch products again with no filters
-    fetch("{{ route('filter.products') }}", {
+      // Fetch products again with no filters
+      fetch("{{ route('filter.products') }}", {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    })
-    .then(res => res.json())
-    .then(data => {
-        productList.innerHTML = data.html;
+      })
+        .then(res => res.json())
+        .then(data => {
+          productList.innerHTML = data.html;
+        });
     });
-});
 
-// Common fetch function
-function fetchProducts(formData) {
-    fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
+    // Common fetch function
+    function fetchProducts(formData) {
+      fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    })
-    .then(res => res.json())
-    .then(data => {
-        productList.innerHTML = data.html;
-    });
-}
+      })
+        .then(res => res.json())
+        .then(data => {
+          productList.innerHTML = data.html;
+        });
+    }
 
-// Auto-submit on change
-document.querySelectorAll('#filterForm input').forEach(input => {
-    input.addEventListener('change', () => {
+    // Auto-submit on change
+    document.querySelectorAll('#filterForm input').forEach(input => {
+      input.addEventListener('change', () => {
         filterForm.dispatchEvent(new Event('submit'));
+      });
     });
-});
 
-// Handle animal filter changes
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.animal-checkbox').forEach(cb => {
-    cb.addEventListener('change', function(e) {
-      e.target.parentElement.classList.toggle('selected', e.target.checked);
-      applyFilters();
+    // Handle animal filter changes
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.animal-checkbox').forEach(cb => {
+        cb.addEventListener('change', function (e) {
+          e.target.parentElement.classList.toggle('selected', e.target.checked);
+          applyFilters();
+        });
+      });
     });
-  });
-});
 
-// Apply filters function (animal part only - assumes search and other filters are handled elsewhere)
-function applyFilters() {
-  const checkedAnimals = Array.from(document.querySelectorAll('.animal-checkbox:checked')).map(cb => cb.value);
-  const cards = document.querySelectorAll('.product-card');
-  cards.forEach(card => {
-    const animal = card.dataset.animal || '';
-    const matchesAnimal = checkedAnimals.length === 0 || checkedAnimals.includes(animal);
-    // Integrate with full filter logic here if needed
-    card.style.display = matchesAnimal ? 'flex' : 'none';
-  });
-}
+    // Apply filters function (animal part only - assumes search and other filters are handled elsewhere)
+    function applyFilters() {
+      const checkedAnimals = Array.from(document.querySelectorAll('.animal-checkbox:checked')).map(cb => cb.value);
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const animal = card.dataset.animal || '';
+        const matchesAnimal = checkedAnimals.length === 0 || checkedAnimals.includes(animal);
+        // Integrate with full filter logic here if needed
+        card.style.display = matchesAnimal ? 'flex' : 'none';
+      });
+    }
 
 
-</script>
+  </script>
 
 </body>
+
 </html>
