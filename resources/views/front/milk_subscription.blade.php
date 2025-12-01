@@ -923,12 +923,12 @@
       </div>
       <nav class="nav-links">
         <a href="/home">Home</a>
-        <a href="/products">Products</a>
+        <a href="/all-products">Products</a>
         <div class="dropdown">
           <a href="#" class="dropdown-toggle">Subscription</a>
           <div class="dropdown-menu">
-            <a href="/milksubscription">Milk Subscription</a>
-            <a href="/yogurtsubscription">Yogurt Subscription</a>
+            <a href="/milk-subscription">Milk Subscription</a>
+            <a href="/yogurt-subscription">Yogurt Subscription</a>
           </div>
         </div>
         <a href="#features">Features</a>
