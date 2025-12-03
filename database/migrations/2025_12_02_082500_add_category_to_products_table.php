@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table('products', function (Blueprint $table) {
+            // Only add if not already there
+            if (!Schema::hasColumn('products', 'category')) {
+                $table->string('category')->nullable(); // no "after('weight')" here
+            }
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('products', function (Blueprint $table) {
+            if (Schema::hasColumn('products', 'category')) {
+                $table->dropColumn('category');
+            }
+        });
+    }
+};

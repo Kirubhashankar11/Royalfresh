@@ -14,6 +14,7 @@ use App\Models\Variant;
 use App\Models\VariantDetail;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     /**
@@ -872,59 +873,49 @@ public function updatePosition(Request $request)
 // app/Http/Controllers/ProductController.php
 public function filter(Request $request)
 {
-    // dd($request->all());
-    $categories = Category::with(['products' => function($q) use ($request) {
-        // Apply price filter
-      if ($request->filled('min_price') && $request->filled('max_price')) {
-    $min = (float) $request->min_price;
-    $max = (float) $request->max_price;
+    $query = Product::query();
 
-    $q->where(function($query) use ($min, $max) {
-        // simple products
-        $query->where(function($sq) use ($min, $max) {
-            $sq->where('variant_type', 'simple')
-               ->whereBetween('s_price', [$min, $max]);
-        });
-
-        // variable products (at least one variant matches)
-        $query->orWhere(function($vq) use ($min, $max) {
-            $vq->where('variant_type', 'safety')
-               ->whereHas('Productvariants', function($pv) use ($min, $max) {
-                   $pv->whereBetween('price', [$min, $max]);
-               });
-        });
-    });
-}
-
-
-
-        // Apply rating filter
-        if ($request->rating) {
-            $q->where('rating', '>=', $request->rating);
-        }
-
-         if ($request->filter_cat && is_array($request->filter_cat)) {
-            $q->whereIn('filter_category', $request->filter_cat);
-        }
-    }]);
-
-    // Filter categories if selected
-    if ($request->categories) {
-        $categories->whereIn('id', $request->categories);
+    // 1) Category filter (matches products.category TEXT)
+    if ($request->filled('categories')) {
+        $categoryNames = (array) $request->input('categories'); // ["Dairy Products", ...]
+        $query->whereIn('category', $categoryNames);
     }
 
-    $categories = $categories->get();
+    // 2) Animal filter (cow, goat, camel, etc.)
+    if ($request->filled('filter_cat')) {
+        $animals = (array) $request->input('filter_cat'); // ["cow", "goat", ...]
+        $query->whereIn('filter_category', $animals);     // column from Excel
+    }
 
-    // dd($categories);
+    // 3) Price filter
+    if ($request->filled('min_price')) {
+        $query->where('s_price', '>=', $request->input('min_price'));
+    }
 
-    return response()->json([
-        'html' => view('front.partials.products', compact('categories'))->render()
-    ]);
+    if ($request->filled('max_price')) {
+        $query->where('s_price', '<=', $request->input('max_price'));
+    }
+
+    // Fetch products
+    $products = $query->get();
+
+    // Group again for the partial
+    $groupedProducts = $products->groupBy(function ($product) {
+        return $product->category ? trim($product->category) : 'Uncategorized';
+    });
+
+    // If AJAX request, return only the products partial HTML
+    if ($request->ajax()) {
+        return view('front.partials.products', compact('groupedProducts'))->render();
+    }
+
+    // Fallback (if called without AJAX)
+    $filterCategories = Product::whereNotNull('category')
+        ->select('category')
+        ->distinct()
+        ->pluck('category');
+
+    return view('front.all_products', compact('groupedProducts', 'filterCategories'));
 }
 
-
-
-
-
-
-   }
+}

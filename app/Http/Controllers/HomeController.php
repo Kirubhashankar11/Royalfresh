@@ -32,12 +32,34 @@ class HomeController extends Controller
         $bags = Bag::all();
         return view('front.home', compact('products', 'bags'));
     }
-    public function allProducts()
-    {
-        $categories = Category::with('products')->get();
+    // public function allProducts()
+    // {
+    //     $categories = Category::with('products')->get();
       
-        return view('front.all_products', compact('categories'));
-    }
+    //     return view('front.all_products', compact('categories'));
+    // }
+
+    public function allProducts(Request $request)
+{
+    // 1) Get all products
+    $products = Product::all();
+
+    // 2) Group by TEXT category column for display
+    $groupedProducts = $products->groupBy(function ($p) {
+        return $p->category ? trim($p->category) : 'Uncategorized';
+    });
+
+    // 3) Build filter list from DISTINCT product.category values
+    $filterCategories = Product::whereNotNull('category')
+        ->select('category')
+        ->distinct()
+        ->pluck('category');  // ["Dairy Products", "Mutton & Beef", ...]
+
+    return view('front.all_products', [
+        'groupedProducts'   => $groupedProducts,
+        'filterCategories'  => $filterCategories,
+    ]);
+}
     public function single($id)
     {
         $product = Product::find($id);

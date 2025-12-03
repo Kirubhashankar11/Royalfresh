@@ -884,113 +884,57 @@
 
   <!-- === Main Content === -->
   <div class="main-content">
-    <div class="container">
-      <!-- Filter Sidebar -->
-      <aside class="filter-sidebar">
-        <h3>Filter Products</h3>
-        <form id="filterForm">
+  <div class="container">
 
-          <div class="filter-group">
-            <h4>Categories</h4>
-            <div class="filter-options">
-              @foreach($categories as $category)
-                <div class="filter-option">
-                  <input type="checkbox" name="categories[]" value="{{ $category->id }}">
-                  <label for="{{ $category->name }}">{{ $category->name }}</label>
-                </div>
-              @endforeach
+    {{-- FILTER SIDEBAR --}}
+    <aside class="filter-sidebar">
+      <h3>Filter Products</h3>
 
-            </div>
-          </div>
-
-          <div class="filter-group">
-            <h4>Price Range</h4>
-            <div class="price-range">
-              <div class="price-inputs">
-                <input type="number" name="min_price" placeholder="Min">
-                <input type="number" name="max_price" placeholder="Max">
+      <form id="filterForm">
+        {{-- CATEGORIES --}}
+        <div class="filter-group">
+          <h4>Categories</h4>
+          <div class="filter-options">
+            @foreach($filterCategories as $catName)
+              <div class="filter-option">
+                <input
+                  type="checkbox"
+                  name="categories[]"
+                  value="{{ $catName }}"
+                  id="cat_{{ \Illuminate\Support\Str::slug($catName) }}"
+                >
+                <label for="cat_{{ \Illuminate\Support\Str::slug($catName) }}">
+                  {{ $catName }}
+                </label>
               </div>
-              <!-- <input type="range" class="price-slider" min="0" max="100" value="100"> -->
+            @endforeach
+          </div>
+        </div>
+
+        {{-- PRICE RANGE --}}
+        <div class="filter-group">
+          <h4>Price Range</h4>
+          <div class="price-range">
+            <div class="price-inputs">
+              <input type="number" name="min_price" placeholder="Min">
+              <input type="number" name="max_price" placeholder="Max">
             </div>
           </div>
+        </div>
 
-          <!-- <div class="filter-group">
-          <h4>Weight Options</h4>
+        {{-- RATINGS (visual only for now) --}}
+        <div class="filter-group">
+          <h4>Ratings</h4>
           <div class="filter-options">
             <div class="filter-option">
-              <input type="checkbox" id="250g">
-              <label for="250g">250 grams</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="500g">
-              <label for="500g">500 grams</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="1kg">
-              <label for="1kg">1 kg</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="1l">
-              <label for="1l">1 litre</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="2l">
-              <label for="2l">2 litre</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="5l">
-              <label for="5l">5 litre</label>
-            </div>
-          </div>
-        </div> -->
-
-          <!-- <div class="filter-group">
-          <h4>Availability</h4>
-          <div class="filter-options">
-            <div class="filter-option">
-              <input type="checkbox" id="in-stock" checked>
-              <label for="in-stock">In Stock</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="out-of-stock">
-              <label for="out-of-stock">Out of Stock</label>
-            </div>
-          </div>
-        </div> -->
-
-          <div class="filter-group">
-            <h4>Ratings</h4>
-            <div class="filter-options">
-              <div class="filter-option">
-                <input type="checkbox" id="rating5">
-                <label for="rating5">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </label>
-              </div>
-              <div class="filter-option">
-                <input type="checkbox" id="rating4">
-                <label for="rating4">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i> & above
-                </label>
-              </div>
-              <div class="filter-option">
-                <input type="checkbox" id="rating3">
-                <label for="rating3">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-                  <i class="far fa-star"></i> & above
-                </label>
-              </div>
+              <input type="checkbox" id="rating5">
+              <label for="rating5">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </label>
             </div>
           </div>
           <div class="filter-group">
@@ -1023,29 +967,53 @@
               </label>
             </div>
           </div>
+        </div>
 
-          <div class="filter-buttons">
-            <button type="submit" class="filter-btn apply-btn">Apply Filters</button>
-            <button type="reset" class="filter-btn reset-btn">Reset</button>
+        {{-- ANIMAL FILTERS --}}
+        <div class="filter-group">
+          <div class="filter-options animal-filters">
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="cow" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/cow_filteration.png')}}" alt="Cow" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="goat" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/goat_filteration.png')}}" alt="Goat" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="camel" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/camel_filteration.png')}}" alt="Camel" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="hen" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/hen_filteration.png')}}" alt="Hen" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="buffalo" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/buffalo_filteration.png')}}" alt="Buffalo" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="sea_food" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/fish_filteration.png')}}" alt="Fish" class="animal-image">
+            </label>
           </div>
-        </form>
-      </aside>
+        </div>
 
-      <!-- Products Container -->
+        {{-- BUTTONS --}}
+        <div class="filter-buttons">
+          <button type="submit" class="filter-btn apply-btn">Apply Filters</button>
+          <button type="reset" class="filter-btn reset-btn">Reset</button>
+        </div>
+      </form>
+    </aside>
 
+    {{-- PRODUCTS COLUMN --}}
+    <main class="products-container" id="product-list">
+      @include('front.partials.products', ['groupedProducts' => $groupedProducts])
+    </main>
 
-      <main class="products-container" id="product-list">
-        @include('front.partials.products', ['products' => $category->products])
-      </main>
-
-
-
-
-
-
-      </main>
-    </div>
   </div>
+</div>
 
   <script>
     /*
@@ -1192,30 +1160,81 @@
           }
         }
       });
+    });
 
-      // Initialize on DOM ready
-      document.addEventListener('DOMContentLoaded', () => {
-        renderCartBadge();
-        attachAddToCartHandlers(document);
+// document.getElementById('filterForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     let formData = new FormData(this);
 
-        // Watch the whole document for new product cards loaded dynamically
-        observer.observe(document.body, { childList: true, subtree: true });
+//     fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
+//         headers: { 'X-Requested-With': 'XMLHttpRequest' }
+//     })
+//     .then(res => res.json())
+//     .then(data => {
+//         document.getElementById('product-list').innerHTML = data.html;
+//     });
+// });
+
+
+ const filterForm  = document.getElementById('filterForm');
+const productList = document.getElementById('product-list');
+
+function fetchProducts(formData = null) {
+    let url = "{{ route('filter.products') }}";
+
+    if (formData) {
+        const params = new URLSearchParams(formData);
+        url = url + "?" + params.toString();
+    }
+
+    fetch(url, {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(res => res.text())          // HTML
+    .then(html => {
+        productList.innerHTML = html; // insert partial
+    })
+    .catch(console.error);
+}
+  // Apply filters on submit
+  filterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(filterForm);
+      fetchProducts(formData);
+  });
+
+  // Auto-submit on any change
+  document.querySelectorAll('#filterForm input').forEach(input => {
+      input.addEventListener('change', () => {
+          filterForm.dispatchEvent(new Event('submit'));
+      });
+  });
+
+  // Reset filters
+  document.querySelector('.reset-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      filterForm.reset();
+      document.querySelectorAll('.animal-checkbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.animal-label, .animal-image').forEach(el => {
+          el.classList.remove('active', 'selected', 'checked', 'highlight');
       });
 
-      // expose functions to window for quick debugging if needed
-      window._cartUtils = { loadCart, saveCart, renderCartBadge, addToCartFromButton };
-    })();
-  </script>
+      // fetch all products with no filters
+      fetchProducts();
+  });
 
-  <style>
-    /* tiny feedback style - optional and won't break your design */
-    .added-to-cart {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-      transition: transform .12s ease;
-    }
-  </style>
+  // Optional: visual “selected” state for animal icons
+  document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.animal-checkbox').forEach(cb => {
+          cb.addEventListener('change', function () {
+              this.parentElement.classList.toggle('selected', this.checked);
+          });
+      });
+  });
 
+
+</script>
 
 </body>
 
