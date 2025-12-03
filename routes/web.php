@@ -13,17 +13,30 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VariantController;
 use App\Http\Controllers\Admin\DeliveryController;
 use App\Models\Product;
+use App\Http\Controllers\ProductImportController;
+use App\Http\Controllers\CityController;
+
 
 /*
 |--------------------------------------------------------------------------
 | FRONT PRODUCT PAGE
 |--------------------------------------------------------------------------
 */
+// Route::get('/products', function () {
+//     $products = Product::all();
+//     return view('front.products', compact('products'));
+// });
+
 Route::get('/products', function () {
-    $products = Product::all();
-    return view('front.products', compact('products'));
+    $products = \App\Models\Product::whereNotNull('category')->get();
+    $groupedProducts = $products->groupBy(function ($p) {
+        return $p->category ?: 'Uncategorized';
+    });
+
+    return view('front.products', compact('groupedProducts'));
 });
 
+Route::post('/set-city', [CityController::class, 'setCity'])->name('set.city');
 /*
 |--------------------------------------------------------------------------
 | ADMIN (Protected Routes)
@@ -60,6 +73,11 @@ Auth::routes();
 Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('units', App\Http\Controllers\UnitController::class);
 Route::resource('weights', App\Http\Controllers\WeightController::class);
+Route::get('products/import', [ProductImportController::class, 'showImportForm'])
+    ->name('products.import.form');
+
+Route::post('products/import', [ProductImportController::class, 'import'])
+    ->name('products.import');
 Route::resource('products', ProductController::class);
 Route::resource('variants', VariantController::class);
 Route::resource('taxes', App\Http\Controllers\TaxController::class);
@@ -113,3 +131,13 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 |--------------------------------------------------------------------------
 */
 Route::get('/checkout', fn() => view('front.checkout'))->name('checkout');
+
+
+
+
+
+Route::get('/admin/products/import', [ProductImportController::class, 'showImportForm'])
+    ->name('products.import.form');
+
+Route::post('/admin/products/import', [ProductImportController::class, 'import'])
+    ->name('products.import');

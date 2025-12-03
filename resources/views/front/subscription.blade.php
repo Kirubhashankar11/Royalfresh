@@ -568,8 +568,8 @@
       </button>
     </div>
     <ul class="side-nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/all-products">Products</a></li>
       <!-- New Dropdown Menu for Mobile -->
       <li class="dropdown-mobile">
         <a href="#" class="dropdown-toggle">Subscription <i class="fas fa-chevron-down"></i></a>
@@ -597,14 +597,14 @@
         <input type="text" id="searchInput" placeholder="Search products..." />
       </div>
       <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
+        <a href="/home">Home</a>
+        <a href="/all-products">Products</a>
         <!-- New Dropdown Menu -->
         <div class="dropdown">
-          <a href="subscription.html" class="dropdown-toggle">Subscription</a>
+          <a href="/subscription" class="dropdown-toggle">Subscription</a>
           <div class="dropdown-menu">
             <a href="/milk-subscription">Milk Subscription</a>
-            <a href="yogurtsubscription.html">Yogurt Subscription</a>
+            <a href="/yogurt-subscription">Yogurt Subscription</a>
           </div>
         </div>
         <a href="#features">Features</a>

@@ -774,6 +774,7 @@
       <nav class="nav-links">
         <a href="/home">Home</a>
         <a href="/all-products">Products</a>
+        <a href="/subscription">Subscription</a>
         <a href="#features">Features</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
@@ -783,80 +784,45 @@
 
   <!-- === Main Content === -->
   <div class="main-content">
-    <div class="container">
-      <!-- Filter Sidebar -->
-      <aside class="filter-sidebar">
-        <h3>Filter Products</h3>
-        <form id="filterForm">
-        
+  <div class="container">
+
+    {{-- FILTER SIDEBAR --}}
+    <aside class="filter-sidebar">
+      <h3>Filter Products</h3>
+
+      <form id="filterForm">
+        {{-- CATEGORIES --}}
         <div class="filter-group">
           <h4>Categories</h4>
           <div class="filter-options">
-             @foreach($categories as $category)
-            <div class="filter-option">
-               <input type="checkbox" name="categories[]" value="{{ $category->id }}">
-              <label for="{{ $category->name }}">{{ $category->name }}</label>
-            </div>
+            @foreach($filterCategories as $catName)
+              <div class="filter-option">
+                <input
+                  type="checkbox"
+                  name="categories[]"
+                  value="{{ $catName }}"
+                  id="cat_{{ \Illuminate\Support\Str::slug($catName) }}"
+                >
+                <label for="cat_{{ \Illuminate\Support\Str::slug($catName) }}">
+                  {{ $catName }}
+                </label>
+              </div>
             @endforeach
-           
           </div>
         </div>
-        
+
+        {{-- PRICE RANGE --}}
         <div class="filter-group">
           <h4>Price Range</h4>
           <div class="price-range">
             <div class="price-inputs">
               <input type="number" name="min_price" placeholder="Min">
-                <input type="number" name="max_price" placeholder="Max">
+              <input type="number" name="max_price" placeholder="Max">
             </div>
-            <!-- <input type="range" class="price-slider" min="0" max="100" value="100"> -->
           </div>
         </div>
-        
-        <!-- <div class="filter-group">
-          <h4>Weight Options</h4>
-          <div class="filter-options">
-            <div class="filter-option">
-              <input type="checkbox" id="250g">
-              <label for="250g">250 grams</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="500g">
-              <label for="500g">500 grams</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="1kg">
-              <label for="1kg">1 kg</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="1l">
-              <label for="1l">1 litre</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="2l">
-              <label for="2l">2 litre</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="5l">
-              <label for="5l">5 litre</label>
-            </div>
-          </div>
-        </div> -->
-        
-        <!-- <div class="filter-group">
-          <h4>Availability</h4>
-          <div class="filter-options">
-            <div class="filter-option">
-              <input type="checkbox" id="in-stock" checked>
-              <label for="in-stock">In Stock</label>
-            </div>
-            <div class="filter-option">
-              <input type="checkbox" id="out-of-stock">
-              <label for="out-of-stock">Out of Stock</label>
-            </div>
-          </div>
-        </div> -->
-        
+
+        {{-- RATINGS (visual only for now) --}}
         <div class="filter-group">
           <h4>Ratings</h4>
           <div class="filter-options">
@@ -892,57 +858,52 @@
             </div>
           </div>
         </div>
+
+        {{-- ANIMAL FILTERS --}}
         <div class="filter-group">
-        <div class="filter-options animal-filters">
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="cow" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/cow_filteration.png')}}" alt="Cow" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="goat" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/goat_filteration.png')}}" alt="Goat" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="camel" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/camel_filteration.png')}}" alt="Camel" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="hen" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/hen_filteration.png')}}" alt="Hen" class="animal-image">
-          </label>
-          <label class="animal-label">
-            <input type="checkbox" class="animal-checkbox" value="buffalo" name="filter_cat[]">
-            <img src="{{asset('Assets/filteration_images/buffalo_filteration.png')}}" alt="Buffalo" class="animal-image">
-          </label>
-           <label class="animal-label">
-              <input type="checkbox" class="animal-checkbox" value="sea_food" name="filter_cat[]">
-              <img src="{{asset('Assets/filteration_images/fish_filteration.png')}}" alt="fish" class="animal-image">
+          <div class="filter-options animal-filters">
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="cow" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/cow_filteration.png')}}" alt="Cow" class="animal-image">
             </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="goat" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/goat_filteration.png')}}" alt="Goat" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="camel" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/camel_filteration.png')}}" alt="Camel" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="hen" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/hen_filteration.png')}}" alt="Hen" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="buffalo" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/buffalo_filteration.png')}}" alt="Buffalo" class="animal-image">
+            </label>
+            <label class="animal-label">
+              <input type="checkbox" class="animal-checkbox" value="sea_food" name="filter_cat[]">
+              <img src="{{asset('Assets/filteration_images/fish_filteration.png')}}" alt="Fish" class="animal-image">
+            </label>
+          </div>
         </div>
-      </div>
-        
+
+        {{-- BUTTONS --}}
         <div class="filter-buttons">
           <button type="submit" class="filter-btn apply-btn">Apply Filters</button>
           <button type="reset" class="filter-btn reset-btn">Reset</button>
         </div>
-        </form>
-      </aside>
-      
-      <!-- Products Container -->
-     
-        
-<main class="products-container" id="product-list">
-    @include('front.partials.products', ['products' => $category->products])
-</main>
+      </form>
+    </aside>
 
-          
-      
+    {{-- PRODUCTS COLUMN --}}
+    <main class="products-container" id="product-list">
+      @include('front.partials.products', ['groupedProducts' => $groupedProducts])
+    </main>
 
-
-       
-      </main>
-    </div>
   </div>
+</div>
 
   <script>
     // Header scroll effect
@@ -1002,78 +963,62 @@
 // });
 
 
-const filterForm = document.getElementById('filterForm');
+ const filterForm  = document.getElementById('filterForm');
 const productList = document.getElementById('product-list');
 
-// Apply filters
-filterForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    fetchProducts(new FormData(this));
-});
+function fetchProducts(formData = null) {
+    let url = "{{ route('filter.products') }}";
 
-// Reset filters
-document.querySelector('.reset-btn').addEventListener('click', function(e) {
-    e.preventDefault(); // prevent full page reload
+    if (formData) {
+        const params = new URLSearchParams(formData);
+        url = url + "?" + params.toString();
+    }
 
-    filterForm.reset(); // clear all inputs
-    document.querySelectorAll('.animal-checkbox').forEach(cb => {
-        cb.checked = false;
-    });
-
-    // ✅ Remove active/selected CSS state from all labels or images
-    document.querySelectorAll('.animal-label, .animal-image').forEach(el => {
-        el.classList.remove('active', 'selected', 'checked', 'highlight'); 
-    });
-
-    // Fetch products again with no filters
-    fetch("{{ route('filter.products') }}", {
+    fetch(url, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
-    .then(res => res.json())
-    .then(data => {
-        productList.innerHTML = data.html;
-    });
-});
-
-// Common fetch function
-function fetchProducts(formData) {
-    fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    .then(res => res.text())          // HTML
+    .then(html => {
+        productList.innerHTML = html; // insert partial
     })
-    .then(res => res.json())
-    .then(data => {
-        productList.innerHTML = data.html;
-    });
+    .catch(console.error);
 }
-
-// Auto-submit on change
-document.querySelectorAll('#filterForm input').forEach(input => {
-    input.addEventListener('change', () => {
-        filterForm.dispatchEvent(new Event('submit'));
-    });
-});
-
-// Handle animal filter changes
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.animal-checkbox').forEach(cb => {
-    cb.addEventListener('change', function(e) {
-      e.target.parentElement.classList.toggle('selected', e.target.checked);
-      applyFilters();
-    });
+  // Apply filters on submit
+  filterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(filterForm);
+      fetchProducts(formData);
   });
-});
 
-// Apply filters function (animal part only - assumes search and other filters are handled elsewhere)
-function applyFilters() {
-  const checkedAnimals = Array.from(document.querySelectorAll('.animal-checkbox:checked')).map(cb => cb.value);
-  const cards = document.querySelectorAll('.product-card');
-  cards.forEach(card => {
-    const animal = card.dataset.animal || '';
-    const matchesAnimal = checkedAnimals.length === 0 || checkedAnimals.includes(animal);
-    // Integrate with full filter logic here if needed
-    card.style.display = matchesAnimal ? 'flex' : 'none';
+  // Auto-submit on any change
+  document.querySelectorAll('#filterForm input').forEach(input => {
+      input.addEventListener('change', () => {
+          filterForm.dispatchEvent(new Event('submit'));
+      });
   });
-}
+
+  // Reset filters
+  document.querySelector('.reset-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+
+      filterForm.reset();
+      document.querySelectorAll('.animal-checkbox').forEach(cb => cb.checked = false);
+      document.querySelectorAll('.animal-label, .animal-image').forEach(el => {
+          el.classList.remove('active', 'selected', 'checked', 'highlight');
+      });
+
+      // fetch all products with no filters
+      fetchProducts();
+  });
+
+  // Optional: visual “selected” state for animal icons
+  document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.animal-checkbox').forEach(cb => {
+          cb.addEventListener('change', function () {
+              this.parentElement.classList.toggle('selected', this.checked);
+          });
+      });
+  });
 
 
 </script>

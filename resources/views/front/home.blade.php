@@ -35,29 +35,56 @@
 
     /* === Premium Header === */
     header {
-      background: rgba(255, 249, 240, 0.95);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: var(--shadow-sm);
-      padding: 1rem 4vw;
-      transition: all 0.3s ease;
-    }
+  background: rgba(255, 249, 240, 0.95);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+  padding: 1rem 4vw;
+  transition: all 0.3s ease;
+}
     header.scrolled {
       padding: 0.7rem 4vw;
       background: rgba(255, 249, 240, 0.98);
       backdrop-filter: blur(10px);
     }
     .header-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* keep as you had */
+  gap: 1.5rem;
+}
+/* .city-badge {
+  position: absolute;
+  top: 140%;
+  right: 4vw;
+  transform: translateY(-50%);
+  background: #523a17;
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+} */
+
+/* Slightly smaller / reposition on mobile */
+/* @media (max-width: 768px) {
+  .city-badge {
+    top: auto;
+    bottom: 8px;
+    right: 20%;
+    transform: translateX(50%);
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+} */
+
     .logo {
       display: flex;
       align-items: center;
@@ -1079,17 +1106,75 @@
         right: -100%;
       }
     }
+
+    /* Header is already fixed; make sure it’s positioning context for the pill */
+header#mainHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.city-pill {
+  position: absolute;
+  top: 20%;              /* Sits below header bar */
+  right: 4vw;             /* Align to right */
+  transform: translateY(-50%);
+  background: #523a17;
+  color: #fff;
+  padding: 6px 18px;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .city-pill {
+    top: 160%;
+    right: 3vw;
+    font-size: 12px;
+    padding: 5px 14px;
+  }
+}
   </style>
 </head>
 <body>
-   <div class="overlay" id="modalOverlay"></div>
+  @php
+    $hasCity = session()->has('selected_city');
+@endphp
 
-  <!-- === Location Modal === -->
-  <div class="location-modal" id="locationModal">
+@if(!$hasCity)
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      showLocationModal();
+  });
+</script>
+@endif
+  <div class="overlay" id="modalOverlay">
+  </div>
+
+<!-- === Location Modal === -->
+<div class="location-modal" id="locationModal">
+  <form method="POST" action="{{ route('set.city') }}">
+    @csrf
+
     <div class="modal-header">
       <h2 class="modal-title">Select Your Location</h2>
-      <p class="modal-subtitle">To provide the best delivery experience, please select your state and city in the UAE.</p>
+      <p class="modal-subtitle">
+        To provide the best delivery experience, please select your state and city in the UAE.
+      </p>
     </div>
+
     <div class="modal-body">
       <div class="form-group">
         <label for="stateSelect" class="form-label">Select State (Emirate)</label>
@@ -1097,23 +1182,27 @@
           <option value="">Choose a state...</option>
         </select>
       </div>
+
       <div class="form-group">
         <label for="citySelect" class="form-label">Select City</label>
-        <select id="citySelect" class="form-select" disabled>
+        <select id="citySelect" name="city" class="form-select" disabled>
           <option value="">First select a state...</option>
         </select>
       </div>
     </div>
-    <div class="modal-footer">
-      <!-- <button class="btn btn-secondary" id="cancelBtn">Cancel</button> -->
-      <button class="btn btn-primary" id="continueBtn" disabled>Continue</button>
-    </div>
-  </div>
 
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" id="continueBtn" disabled>
+        Continue
+      </button>
+    </div>
+  </form>
+</div>
   <!-- === Premium Header === -->
   <header id="mainHeader">
     <div class="header-container">
       <div class="logo">
+       
         <img src="{{ asset('Assets/logo.png') }}" alt="Royal Fresh Logo" />
         Royal Fresh
       </div>
@@ -1121,20 +1210,38 @@
         <i class="fas fa-search search-icon"></i>
         <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" />
       </div>
+
+
+      
+
+
       <nav class="nav-links">
+       
         <a href="#">Home</a>
         <a href="/all-products">Products</a>
         <a href="/subscription">Subscription</a>
+      
         <a href="#features">Features</a>
         <a href="#testimonials">Testimonials</a>
+        
         <a href="#contact">Contact</a>
       </nav>
+     
     </div>
   </header>
 
+  @if(session('selected_city'))
+    <button id="changeCityBtn" class="city-pill" type="button">
+        Delivering to:
+        <strong id="selectedCityText">{{ session('selected_city') }}</strong>
+    </button>
+@endif
+
+  
   <!-- === Premium Hero Section with Videos === -->
   <section class="hero">
     <div class="video-container">
+    
       <div class="video-panel meat-panel">
         <video autoplay loop muted playsinline>
           <source src="{{ asset('Assets/meat.mp4') }}" type="video/mp4">
@@ -1172,23 +1279,64 @@
     </p>
     
     <div class="category-tabs">
-      <div class="category-tab active" onclick="filterByCategory('all')">All Products</div>
-      <div class="category-tab" onclick="filterByCategory('meat')">Meat Selection</div>
-      <div class="category-tab" onclick="filterByCategory('dairy')">Dairy Products</div>
-    </div>
+  <div class="category-tab active" onclick="filterByCategory('all')">
+      All Products
+  </div>
+
+  <div class="category-tab" onclick="filterByCategory('mutton & beef')">
+      Meat Selection
+  </div>
+
+  <div class="category-tab" onclick="filterByCategory('dairy products')">
+      Dairy Products
+  </div>
+</div>
     
     <div class="products-list" id="productsList">
       <!-- Meat Products -->
         @foreach ($products as $product)
-      <div class="product-card" data-title="{{ strtolower($product->product_name) }}" 
-     data-type="{{ strtolower($product->category->name) }}">
+      <div class="product-card"
+     data-title="{{ strtolower($product->product_name) }}"
+     data-type="{{ strtolower($product->category ?? 'uncategorized') }}">
+
+
         <img src="{{ asset('images/product_images/' . $product->featured_image) }}" alt="{{ $product->product_name }}" class="product-image" />
         <h3 class="product-title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a></h3>
-        <div class="product-type">{{ ucfirst($product->category->name) }}</div>
+       <div class="product-type">
+    {{ $product->category ?? 'Uncategorized' }}
+</div>
+        
          @if($product->variant_type == 'simple')
-         <div class="product-price">AED {{ $product->s_price }}/{{$product->s_weight}} {{$product->Sunit->name}}</div>
+        @php
+    $group = session('city_group', 'dubai');
+
+    if ($group === 'dubai') {
+        $price = $product->price_dubai ?? $product->s_price;
+    } elseif ($group === 'shj_ajm') {
+        $price = $product->price_shj_ajm ?? $product->s_price;
+    } else {
+        $price = $product->price_other ?? $product->s_price;
+    }
+@endphp
+
+@if($product->variant_type == 'simple')
+    <div class="product-price">
+     @php
+    $displayWeight = $product->s_weight;
+@endphp
+<div class="product-price">
+    AED {{ $price }}/{{ $displayWeight }} {{ optional($product->Sunit)->name }}
+</div>
+    </div>
+@else
+    <div class="product-price">
+        From AED {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }} {{ optional($product->unit)->name }}
+    </div>
+@endif
         @else
-        <div class="product-price">From AED {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }} {{$product->unit->name}} </div>
+        <div class="product-price">
+  From AED {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }} {{ optional($product->unit)->name ?? '' }}
+</div>
         @endif
         <button class="add-cart-btn">
           <i class="fas fa-cart-plus"></i> Add to Cart
@@ -1363,81 +1511,178 @@
   <script>
 
    const uaeData = {
-      "Abu Dhabi": [
-        "Abu Dhabi City", "Al Ain", "Liwa Oasis", "Zayed City", "Al Shahama"
-      ],
-      "Ajman": [
-        "Ajman City", "Al Nuaimiya", "Al Rashidiya", "Mashrif", "Al Jurf"
-      ],
-      "Dubai": [
-        "Dubai", "Dubai Marina", "Jumeirah", "Downtown Dubai", "Deira", "Bur Dubai", "Al Barsha"
-      ],
-      "Fujairah": [
-        "Fujairah City", "Dibba Al-Fujairah", "Al Hayl", "Siji", "Masfout"
-      ],
-      "Ras Al Khaimah": [
-        "Ras Al Khaimah City", "Al Jazirah Al Hamra", "Dibba Al-Hisn", "Khatt", "Al Rams"
-      ],
-      "Sharjah": [
-        "Sharjah City", "Al Majaz", "Al Nahda", "Muwaileh", "Khor Fakkan"
-      ],
-      "Umm Al Quwain": [
-        "Umm Al Quwain City", "Al Salami", "Al Ibri", "Falaj Al Mualla", "Qawasim Corniche"
-      ]
-    };
+  "Abu Dhabi": [
+    "Abu Dhabi City", "Al Ain", "Liwa Oasis", "Zayed City", "Al Shahama"
+  ],
+  "Ajman": [
+    "Ajman City", "Al Nuaimiya", "Al Rashidiya", "Mashrif", "Al Jurf"
+  ],
+  "Dubai": [
+    "Dubai", "Dubai Marina", "Jumeirah", "Downtown Dubai", "Deira", "Bur Dubai", "Al Barsha"
+  ],
+  "Fujairah": [
+    "Fujairah City", "Dibba Al-Fujairah", "Al Hayl", "Siji", "Masfout"
+  ],
+  "Ras Al Khaimah": [
+    "Ras Al Khaimah City", "Al Jazirah Al Hamra", "Dibba Al-Hisn", "Khatt", "Al Rams"
+  ],
+  "Sharjah": [
+    "Sharjah City", "Al Majaz", "Al Nahda", "Muwaileh", "Khor Fakkan"
+  ],
+  "Umm Al Quwain": [
+    "Umm Al Quwain City", "Al Salami", "Al Ibri", "Falaj Al Mualla", "Qawasim Corniche"
+  ]
+};
 
-    // Initialize Lucide Icons
-    document.addEventListener('DOMContentLoaded', function() {
-      lucide.createIcons();
+// ✅ Show modal
+function showLocationModal() {
+  const modal   = document.getElementById('locationModal');
+  const overlay = document.getElementById('modalOverlay');
+  if (!modal || !overlay) return;
 
-      // Show modal on load
-      showLocationModal();
+  modal.classList.add('active');
+  overlay.classList.add('active');
 
-      // Populate state dropdown
-      const stateSelect = $('#stateSelect');
-      Object.keys(uaeData).forEach(state => {
-        stateSelect.append(`<option value="${state}">${state}</option>`);
-      });
+  modal.style.display   = 'block';
+  overlay.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+// ✅ Hide modal
+function closeLocationModal() {
+  const modal   = document.getElementById('locationModal');
+  const overlay = document.getElementById('modalOverlay');
+  if (!modal || !overlay) return;
+
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
+
+  modal.style.display   = 'none';
+  overlay.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const $stateSelect = $('#stateSelect');
+  const $citySelect  = $('#citySelect');
+  const continueBtn  = document.getElementById('continueBtn');
+
+  // 1) Fill states
+  Object.keys(uaeData).forEach(state => {
+    $stateSelect.append(new Option(state, state));
+  });
+
+  // 2) Select2 init ONCE
+  $stateSelect.select2({
+    placeholder: "Search and select a state...",
+    width: '100%'
+  });
+
+  $citySelect.select2({
+    placeholder: "Search and select a city...",
+    width: '100%'
+  });
+
+  // 3) State change → load cities
+  $stateSelect.on('change', function () {
+    const selectedState = $(this).val();
+
+    $citySelect.empty(); // clear old
+    if (!selectedState || !uaeData[selectedState]) {
+      $citySelect.append(new Option('First select a state...', ''));
+      $citySelect.prop('disabled', true).trigger('change');
+      if (continueBtn) continueBtn.disabled = true;
+      return;
+    }
+
+    // Add default option
+    $citySelect.append(new Option('Select City', ''));
+
+    // Add all cities
+    uaeData[selectedState].forEach(city => {
+      $citySelect.append(new Option(city, city));
     });
 
-    // Initialize Select2 for searchable dropdowns
-    function initializeSelect2() {
-      $('#stateSelect').select2({
-        placeholder: "Search and select a state...",
-        allowClear: true,
-        width: '100%'
-      });
+    $citySelect.prop('disabled', false).trigger('change');
+    if (continueBtn) continueBtn.disabled = true;
+  });
 
-      $('#citySelect').select2({
-        placeholder: "Search and select a city...",
-        allowClear: true,
-        width: '100%'
-      });
+  // 4) City change → enable Continue
+  $citySelect.on('change', function () {
+    const selectedCity = $(this).val();
+    if (continueBtn) {
+      continueBtn.disabled = !selectedCity;
     }
+  });
+
+  // 5) Overlay click closes modal
+  const modalOverlay = document.getElementById('modalOverlay');
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeLocationModal);
+  }
+
+  // 6) Header pill opens modal again
+  const changeCityBtn = document.getElementById('changeCityBtn');
+  if (changeCityBtn) {
+    changeCityBtn.addEventListener('click', function () {
+      showLocationModal();
+    });
+  }
+});
+
+
+    // Initialize Select2 for searchable dropdowns
+    // function initializeSelect2() {
+    //   $('#stateSelect').select2({
+    //     placeholder: "Search and select a state...",
+    //     allowClear: true,
+    //     width: '100%'
+    //   });
+
+    //   $('#citySelect').select2({
+    //     placeholder: "Search and select a city...",
+    //     allowClear: true,
+    //     width: '100%'
+    //   });
+    // }
 
     // Show Location Modal
     function showLocationModal() {
-      const modal = document.getElementById('locationModal');
-      const overlay = document.getElementById('modalOverlay');
-      modal.classList.add('active');
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      initializeSelect2(); // Initialize Select2 after showing modal
-    }
+  const modal   = document.getElementById('locationModal');
+  const overlay = document.getElementById('modalOverlay');
+  if (!modal || !overlay) return;
+
+  modal.classList.add('active');
+  overlay.classList.add('active');
+
+  // Make sure it's visible
+  modal.style.display   = 'block';
+  overlay.style.display = 'block';
+
+  document.body.style.overflow = 'hidden';
+  initializeSelect2();
+}
 
     // Close Location Modal
     function closeLocationModal() {
-      const modal = document.getElementById('locationModal');
-      const overlay = document.getElementById('modalOverlay');
-      modal.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
-      // Reset selections
-      $('#stateSelect').val(null).trigger('change');
-      $('#citySelect').val(null).trigger('change.select2');
-      document.getElementById('continueBtn').disabled = true;
-      document.getElementById('citySelect').disabled = true;
-    }
+  const modal   = document.getElementById('locationModal');
+  const overlay = document.getElementById('modalOverlay');
+
+  if (!modal || !overlay) return;
+
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
+
+  // Make absolutely sure it's hidden even if style.display was set earlier
+  modal.style.display   = 'none';
+  overlay.style.display = 'none';
+
+  // Reset selections
+  $('#stateSelect').val(null).trigger('change');
+  $('#citySelect').val(null).trigger('change.select2');
+  document.getElementById('continueBtn').disabled = true;
+  document.getElementById('citySelect').disabled  = true;
+}
 
     // State Change Handler
     $('#stateSelect').on('change', function() {
@@ -1468,20 +1713,20 @@
     });
 
     // Continue Button Handler
-    document.getElementById('continueBtn').addEventListener('click', function() {
-      const state = $('#stateSelect').val();
-      const city = $('#citySelect').val();
-      if (state && city) {
-        // Store selection (e.g., in localStorage for persistence)
-        localStorage.setItem('selectedState', state);
-        localStorage.setItem('selectedCity', city);
-        console.log(`Selected: ${state}, ${city}`); // For demo; integrate with delivery logic
-        closeLocationModal();
-      }
-    });
+    // document.getElementById('continueBtn').addEventListener('click', function() {
+    //   const state = $('#stateSelect').val();
+    //   const city = $('#citySelect').val();
+    //   if (state && city) {
+    //     // Store selection (e.g., in localStorage for persistence)
+    //     localStorage.setItem('selectedState', state);
+    //     localStorage.setItem('selectedCity', city);
+    //     console.log(`Selected: ${state}, ${city}`); // For demo; integrate with delivery logic
+    //     closeLocationModal();
+    //   }
+    // });
 
     // Cancel Button Handler
-    document.getElementById('cancelBtn').addEventListener('click', closeLocationModal);
+    // document.getElementById('cancelBtn').addEventListener('click', closeLocationModal);
 
     // Overlay Click to Close
     document.getElementById('modalOverlay').addEventListener('click', closeLocationModal);
@@ -1595,5 +1840,71 @@
       });
     });
   </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const stateSelect    = document.getElementById("stateSelect");
+    const citySelect     = document.getElementById("citySelect");
+    const continueBtn    = document.getElementById("continueBtn");
+    const locationModal  = document.getElementById("locationModal");
+    const modalOverlay   = document.getElementById("modalOverlay");
+    const selectedCityEl = document.getElementById("selectedCityText");
+    const changeCityBtn  = document.getElementById("changeCityBtn");
+
+    // 1) Make header pill open the modal again
+    if (changeCityBtn) {
+        changeCityBtn.addEventListener("click", () => {
+            showLocationModal();   // you already have this function
+        });
+    }
+
+    // 2) Enable / disable Continue based on city
+    if (citySelect && continueBtn) {
+        citySelect.addEventListener("change", () => {
+            continueBtn.disabled = citySelect.value === "";
+        });
+    }
+
+    // 3) When user clicks Continue → save city via AJAX
+//     if (continueBtn) {
+//     continueBtn.addEventListener("click", function (e) {
+//         e.preventDefault(); // prevent normal form submit
+
+//         const city = citySelect.value;
+//         if (!city) return;
+
+//         fetch("{{ route('set.city') }}", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "X-CSRF-TOKEN": "{{ csrf_token() }}",
+//                 "X-Requested-With": "XMLHttpRequest"
+//             },
+//             body: JSON.stringify({ city })
+//         })
+//         .then(res => res.json())
+//         .then(data => {
+//             if (data.success) {
+//                 // ✅ update header text instantly
+//                 if (selectedCityEl) {
+//                     selectedCityEl.textContent = data.city;
+//                 }
+
+//                 // ⬇️ Just call our global closer
+//                 closeLocationModal();
+
+//                 // OPTIONAL: if you want to refresh prices etc:
+//                 // window.location.reload();
+//             }
+//         })
+//         .catch(err => console.error(err));
+//     });
+// }
+
+});
+</script>
+   
+
 </body>
 </html>

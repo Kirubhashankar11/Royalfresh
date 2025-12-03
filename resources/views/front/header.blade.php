@@ -101,6 +101,13 @@
       <nav class="nav-links">
         <a href="#">Home</a>
         <a href="/all-products">Products</a>
+        <div class="dropdown">
+          <a href="/subscription" class="dropdown-toggle">Subscription</a>
+          <div class="dropdown-menu">
+            <a href="/milk-subscription">Milk Subscription</a>
+            <a href="/yogurt-subscription">Yogurt Subscription</a>
+          </div>
+        </div>
         <a href="#features">Features</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>

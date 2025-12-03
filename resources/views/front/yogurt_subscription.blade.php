@@ -922,13 +922,13 @@
         <input type="text" id="searchInput" placeholder="Search products..." />
       </div>
       <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
+        <a href="/home">Home</a>
+        <a href="/all-products">Products</a>
         <div class="dropdown">
           <a href="#" class="dropdown-toggle">Subscription</a>
           <div class="dropdown-menu">
-            <a href="milksubscription.html">Milk Subscription</a>
-            <a href="yogurtsubscription.html">Yogurt Subscription</a>
+            <a href="/milk-subscription">Milk Subscription</a>
+            <a href="/yogurt-subscription">Yogurt Subscription</a>
           </div>
         </div>
         <a href="#features">Features</a>

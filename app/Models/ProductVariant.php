@@ -18,6 +18,11 @@ class ProductVariant extends Model
         'tax_name',
         'tax_type',
         'total_selling_price',
+        'weight',
+        'category',
+        'price_dubai',
+        'price_shj_ajm',
+        'price_other',
     ];
 
     public function PvariantDetails()
