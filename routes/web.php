@@ -5,7 +5,7 @@ require base_path('routes/api.php');
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\CartController;
+// use App\Http\Controllers\CartController;
 use App\Http\Controllers\DeliveryTimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -122,8 +122,8 @@ Route::get('/get-city-slots/{city}', [SubscriptionController::class, 'getCityTim
 | CART ROUTES (Laravel 12 Ready)
 |--------------------------------------------------------------------------
 */
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 
 /*
 |--------------------------------------------------------------------------
@@ -141,3 +141,8 @@ Route::get('/admin/products/import', [ProductImportController::class, 'showImpor
 
 Route::post('/admin/products/import', [ProductImportController::class, 'import'])
     ->name('products.import');
+// Route::get('/checkout', fn() => view('front.checkout'))->name('checkout');
+
+Route::get('/cart', function () {
+    return view('front.cart_page');
+});

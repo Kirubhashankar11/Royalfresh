@@ -34,31 +34,37 @@
   .nav-links a:hover {
     color: #007bff;
   }
+
   /* Responsive styles */
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        padding: 36px 2vw 30px 2vw;
-      }
-      .hero-images img {
-        width: 140px;
-        height: 140px;
-      }
-      header {
-        flex-direction: column;
-        gap: 16px;
-        padding: 16px;
-      }
-      .search-container {
-        position: static;
-        transform: none;
-        width: 100%;
-        text-align: center;
-      }
-      #searchInput {
-        width: 80%;
-      }
-      #searchInput {
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      padding: 36px 2vw 30px 2vw;
+    }
+
+    .hero-images img {
+      width: 140px;
+      height: 140px;
+    }
+
+    header {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .search-container {
+      position: static;
+      transform: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    #searchInput {
+      width: 80%;
+    }
+
+    #searchInput {
       padding: 10px 16px;
       border-radius: 24px;
       border: 1px solid #ccc;
@@ -68,49 +74,52 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: box-shadow 0.2s, border-color 0.2s;
     }
+
     #searchInput:focus {
       border-color: #b22234;
       box-shadow: 0 4px 12px rgba(178, 34, 52, 0.2);
     }
-      .nav-links {
-        gap: 18px;
-      }
+
+    .nav-links {
+      gap: 18px;
     }
-    @media (max-width: 600px) {
-      .hero-title {
-        font-size: 2em;
-      }
-      #products {
-        padding: 36px 1vw 26px 1vw;
-      }
-      .products-list {
-        gap: 12px;
-      }
+  }
+
+  @media (max-width: 600px) {
+    .hero-title {
+      font-size: 2em;
     }
-</style> 
- <header id="mainHeader">
-    <div class="header-container">
-      <div class="logo">
-        <img src="{{ asset('Assets/logo.png') }}" alt="Royal Fresh Logo" />
-        Royal Fresh
-      </div>
-      <div class="search-container">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" />
-      </div>
-      <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="/all-products">Products</a>
-        <div class="dropdown">
-          <a href="/subscription" class="dropdown-toggle">Subscription</a>
-          <div class="dropdown-menu">
-            <a href="/milk-subscription">Milk Subscription</a>
-            <a href="/yogurt-subscription">Yogurt Subscription</a>
-          </div>
-        </div>
-        <a href="#features">Features</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+    #products {
+      padding: 36px 1vw 26px 1vw;
+    }
+
+    .products-list {
+      gap: 12px;
+    }
+  }
+</style>
+<header id="mainHeader">
+  <div class="header-container">
+    <div class="logo">
+      <img src="{{ asset('Assets/logo.png') }}" alt="Royal Fresh Logo" />
+      Royal Fresh
     </div>
-  </header>
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" />
+    </div>
+    <nav class="nav-links">
+      <a href="/home">Home</a>
+      <a href="/all-products">Products</a>
+      <a href="/subscription">Subscription</a>
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="cart-header" href="/cart" aria-label="Open cart">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </a>
+  </div>
+</header>

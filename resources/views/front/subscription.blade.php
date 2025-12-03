@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Royal Fresh – Subscription</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <style>
@@ -19,11 +22,13 @@
       --shadow-md: 0 4px 20px rgba(98, 69, 28, 0.12);
       --shadow-lg: 0 8px 30px rgba(98, 69, 28, 0.15);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--cream);
@@ -43,11 +48,13 @@
       padding: 1rem 4vw;
       transition: all 0.3s ease;
     }
+
     header.scrolled {
       padding: 0.7rem 4vw;
       background: rgba(255, 249, 240, 0.98);
       backdrop-filter: blur(10px);
     }
+
     .header-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -57,6 +64,7 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
+
     .logo {
       display: flex;
       align-items: center;
@@ -66,14 +74,17 @@
       font-size: 1.6rem;
       font-family: 'Playfair Display', serif;
     }
+
     .logo img {
       height: 42px;
       margin-right: 12px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     }
+
     .logo-text {
       display: inline;
     }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -81,6 +92,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .nav-links a {
       text-decoration: none;
       color: var(--dark-brown);
@@ -90,9 +102,11 @@
       padding: 0.5rem 0;
       position: relative;
     }
+
     .nav-links a:hover {
       color: var(--primary-brown);
     }
+
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -103,9 +117,11 @@
       background-color: var(--primary-brown);
       transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
     .nav-links a:hover::after {
       width: 100%;
     }
+
     .search-container {
       flex: 1;
       min-width: 240px;
@@ -113,6 +129,7 @@
       margin: 0 1.5rem;
       position: relative;
     }
+
     #searchInput {
       width: 100%;
       padding: 0.8rem 1.2rem 0.8rem 3rem;
@@ -124,10 +141,12 @@
       box-shadow: var(--shadow-sm);
       background: white;
     }
+
     #searchInput:focus {
       border-color: var(--gold);
       box-shadow: 0 4px 15px rgba(200, 169, 126, 0.2);
     }
+
     .search-icon {
       position: absolute;
       left: 1.2rem;
@@ -253,6 +272,7 @@
       position: relative;
       text-align: center;
     }
+
     .section-title {
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 1rem;
@@ -261,6 +281,7 @@
       position: relative;
       padding-bottom: 20px;
     }
+
     .section-title::after {
       content: '';
       position: absolute;
@@ -271,6 +292,7 @@
       height: 3px;
       background: var(--gold);
     }
+
     .section-subtitle {
       color: #666;
       margin-bottom: 4rem;
@@ -279,6 +301,7 @@
       margin-right: auto;
       font-size: 1.1rem;
     }
+
     .subscription-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -286,6 +309,7 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .sub-card {
       background: white;
       border-radius: 20px;
@@ -302,10 +326,12 @@
       text-decoration: none;
       color: inherit;
     }
+
     .sub-card:hover {
       transform: translateY(-12px);
       box-shadow: var(--shadow-lg);
     }
+
     .sub-card::before {
       content: '';
       position: absolute;
@@ -317,9 +343,11 @@
       transform: scaleX(0);
       transition: transform 0.5s;
     }
+
     .sub-card:hover::before {
       transform: scaleX(1);
     }
+
     .sub-image {
       width: 140px;
       height: 140px;
@@ -327,13 +355,15 @@
       border-radius: 50%;
       margin-bottom: 1.5rem;
       border: 3px solid var(--light-brown);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       transition: all 0.3s;
     }
+
     .sub-card:hover .sub-image {
       transform: scale(1.05);
       border-color: var(--gold);
     }
+
     .sub-title {
       font-size: 1.5rem;
       font-weight: 600;
@@ -341,12 +371,14 @@
       color: var(--dark-brown);
       text-align: center;
     }
+
     .sub-desc {
       color: #666;
       margin-bottom: 2rem;
       text-align: center;
       line-height: 1.6;
     }
+
     .sub-btn {
       background: var(--primary-brown);
       color: white;
@@ -364,6 +396,7 @@
       box-shadow: 0 4px 10px rgba(98, 69, 28, 0.2);
       margin-top: auto;
     }
+
     .sub-btn:hover {
       background: var(--dark-brown);
       transform: translateY(-3px);
@@ -372,8 +405,10 @@
 
     .dropdown {
       position: relative;
-      display: inline-flex; /* Matches flex behavior of <a> in container */
-      align-items: center; /* Centers like other links */
+      display: inline-flex;
+      /* Matches flex behavior of <a> in container */
+      align-items: center;
+      /* Centers like other links */
     }
 
     .dropdown-toggle {
@@ -382,11 +417,14 @@
       font-size: 1.05rem;
       font-weight: 500;
       transition: all 0.3s;
-      padding: 0.5rem 0; /* Exact match to .nav-links a padding */
+      padding: 0.5rem 0;
+      /* Exact match to .nav-links a padding */
       position: relative;
       cursor: pointer;
-      line-height: 1.2; /* Ensures consistent height */
-      white-space: nowrap; /* Prevents wrapping */
+      line-height: 1.2;
+      /* Ensures consistent height */
+      white-space: nowrap;
+      /* Prevents wrapping */
     }
 
     .dropdown-toggle:hover {
@@ -410,7 +448,8 @@
 
     .dropdown-menu {
       position: absolute;
-      top: 100%; /* Drops directly below without gap */
+      top: 100%;
+      /* Drops directly below without gap */
       left: 50%;
       transform: translateX(-50%);
       background: white;
@@ -422,9 +461,11 @@
       transition: opacity 0.3s ease, visibility 0.3s ease;
       z-index: 1001;
       border: 1px solid var(--light-brown);
-      margin-top: 0; /* No extra space */
+      margin-top: 0;
+      /* No extra space */
       overflow: hidden;
-      pointer-events: none; /* Prevents interference until shown */
+      pointer-events: none;
+      /* Prevents interference until shown */
     }
 
     .dropdown:hover .dropdown-menu {
@@ -503,52 +544,67 @@
         gap: 2rem;
       }
     }
+
     @media (max-width: 768px) {
       .header-container {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
+
       .logo {
         margin-bottom: 0;
       }
+
       .logo-text {
         display: none;
       }
+
       .nav-links {
         display: none;
       }
+
       .search-container {
-        display: none; /* Hide search on very small screens, or adjust as needed */
+        display: none;
+        /* Hide search on very small screens, or adjust as needed */
       }
+
       .mobile-menu-btn {
         display: block;
       }
+
       .subscriptions {
         padding: 6rem 4vw 4rem;
       }
+
       .subscription-grid {
         grid-template-columns: 1fr;
       }
+
       .sub-card {
         padding: 2rem 1.5rem;
       }
+
       .sub-image {
         width: 120px;
         height: 120px;
       }
     }
+
     @media (max-width: 480px) {
       .subscriptions {
         padding: 5rem 4vw 3rem;
       }
+
       .sub-card {
         padding: 1.5rem 1rem;
       }
+
       .sub-image {
         width: 100px;
         height: 100px;
       }
+
       .side-nav {
         width: 100%;
         right: -100%;
@@ -556,6 +612,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Mobile Side Nav Overlay -->
   <div class="overlay" id="overlay"></div>
@@ -568,11 +625,12 @@
       </button>
     </div>
     <ul class="side-nav-links">
+
       <li><a href="/home">Home</a></li>
       <li><a href="/all-products">Products</a></li>
       <!-- New Dropdown Menu for Mobile -->
       <li class="dropdown-mobile">
-        <a href="#" class="dropdown-toggle">Subscription <i class="fas fa-chevron-down"></i></a>
+        <a href="/subscription" class="dropdown-toggle">Subscription <i class="fas fa-chevron-down"></i></a>
         <ul class="dropdown-menu-mobile">
           <li><a href="/milk-subscription">Milk Subscription</a></li>
           <li><a href="/yogurt-subscription">Yogurt Subscription</a></li>
@@ -584,6 +642,10 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+  <a class="cart-header" href="/cart" aria-label="Open cart">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge" id="cartBadge">0</span>
+  </a>
 
   <!-- === Premium Header === -->
   <header id="mainHeader">
@@ -612,6 +674,10 @@
         <a href="#bags">Premium Bags</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="cart-header" href="/cart" aria-label="Open cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </a>
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i data-lucide="menu"></i>
       </button>
@@ -621,13 +687,15 @@
   <!-- === Subscription Section === -->
   <section class="subscriptions">
     <h2 class="section-title">Choose Your Subscription</h2>
-    <p class="section-subtitle">Enjoy hassle-free deliveries of your favorite dairy products with our flexible subscription plans. Select the one that suits you best.</p>
-    
+    <p class="section-subtitle">Enjoy hassle-free deliveries of your favorite dairy products with our flexible
+      subscription plans. Select the one that suits you best.</p>
+
     <div class="subscription-grid">
       <a href="/milk-subscription" class="sub-card">
         <img src="{{ asset('Assets/ml1.jpg') }}" alt="Milk Subscription" class="sub-image" />
         <h3 class="sub-title">Milk Subscription</h3>
-        <p class="sub-desc">Get fresh farm milk delivered to your door every morning. Choose your quantity and frequency for ultimate convenience.</p>
+        <p class="sub-desc">Get fresh farm milk delivered to your door every morning. Choose your quantity and frequency
+          for ultimate convenience.</p>
         <button class="sub-btn">
           <i class="fas fa-milk-bottle"></i> Select Plan
         </button>
@@ -636,7 +704,8 @@
       <a href="/yogurt-subscription" class="sub-card">
         <img src="{{ asset('Assets/ml2.jpg') }}" alt="Yogurt Subscription" class="sub-image" />
         <h3 class="sub-title">Yogurt Subscription</h3>
-        <p class="sub-desc">Creamy, probiotic-rich yogurt delivered weekly. Perfect for healthy breakfasts and snacks with customizable portions.</p>
+        <p class="sub-desc">Creamy, probiotic-rich yogurt delivered weekly. Perfect for healthy breakfasts and snacks
+          with customizable portions.</p>
         <button class="sub-btn">
           <i class="fas fa-utensils"></i> Select Plan
         </button>
@@ -650,7 +719,7 @@
 
   <script>
     // Initialize Lucide Icons
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       lucide.createIcons();
     });
 
@@ -682,7 +751,7 @@
     });
 
     // Header scroll effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const header = document.getElementById('mainHeader');
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -692,13 +761,13 @@
     });
 
     // Mobile Dropdown Toggle
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Mobile Subscription Dropdown Toggle
       const mobileDropdownToggle = document.querySelector('.dropdown-mobile .dropdown-toggle');
       const mobileDropdown = document.querySelector('.dropdown-mobile');
 
       if (mobileDropdownToggle) {
-        mobileDropdownToggle.addEventListener('click', function(e) {
+        mobileDropdownToggle.addEventListener('click', function (e) {
           e.preventDefault();
           mobileDropdown.classList.toggle('open');
           const icon = this.querySelector('i');
@@ -710,7 +779,7 @@
       }
 
       // Close mobile dropdown when clicking outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (!mobileDropdown.contains(e.target)) {
           mobileDropdown.classList.remove('open');
           const icon = mobileDropdownToggle.querySelector('i');
@@ -737,4 +806,5 @@
     });
   </script>
 </body>
+
 </html>
