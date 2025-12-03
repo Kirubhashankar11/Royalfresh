@@ -139,9 +139,8 @@
     </div>
 
     <script>
-        console.log("CartData = ", localStorage.getItem("cartData"));
 
-        let cart = JSON.parse(localStorage.getItem("cartData")) || [];
+        let cart = JSON.parse(localStorage.getItem("cartData") || "[]");
 
         function renderCartPage() {
             const sidebar = document.getElementById("newCartSidebar");
@@ -158,23 +157,23 @@
                 total += item.price * item.quantity;
 
                 html += `
-                <div class="cart-item">
-                    <img src="${item.image}" alt="">
-                    <div style="flex:1">
-                        <div class="cart-title">${item.title}</div>
-                        <div class="cart-weight">${item.weight}</div>
-                        <div class="cart-price">AED ${item.price}</div>
+        <div class="cart-item">
+            <img src="${item.image}">
+            <div style="flex:1">
+                <div class="cart-title">${item.title}</div>
+                <div class="cart-weight">${item.weight}</div>
+                <div class="cart-price">AED ${item.price}</div>
 
-                        <div class="qty-controls">
-                            <button onclick="changeQty('${item.id}','${item.weight}', -1)">-</button>
-                            <input type="text" value="${item.quantity}" readonly>
-                            <button onclick="changeQty('${item.id}','${item.weight}', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <button class="remove-btn" onclick="removeItem('${item.id}','${item.weight}')">×</button>
+                <div class="qty-controls">
+                    <button onclick="changeQty('${item.id}','${item.weight}', -1)">-</button>
+                    <input type="text" value="${item.quantity}" readonly>
+                    <button onclick="changeQty('${item.id}','${item.weight}', 1)">+</button>
                 </div>
-                `;
+            </div>
+
+            <button class="remove-btn" onclick="removeItem('${item.id}','${item.weight}')">×</button>
+        </div>
+        `;
             });
 
             html += `<div class="cart-total">Total: AED ${total}</div>`;
@@ -184,7 +183,6 @@
 
         function changeQty(id, weight, change) {
             let item = cart.find(i => i.id == id && i.weight == weight);
-
             if (!item) return;
 
             item.quantity += change;
@@ -205,6 +203,9 @@
 
         renderCartPage();
     </script>
+
+
+
 
 </body>
 

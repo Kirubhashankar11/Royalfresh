@@ -1330,26 +1330,45 @@
     <div class="products-list" id="productsList">
       <!-- Meat Products -->
       @foreach ($products as $product)
-        <div class="product-card" data-title="{{ strtolower($product->product_name) }}"
-          data-type="{{ strtolower($product->category->name) }}">
-          <img src="{{ asset('images/product_images/' . $product->featured_image) }}" alt="{{ $product->product_name }}"
-            class="product-image" />
-          <h3 class="product-title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
-          </h3>
-          <div class="product-type">{{ ucfirst($product->category->name) }}</div>
-          @if($product->variant_type == 'simple')
-            <div class="product-price">AED {{ $product->s_price }}/{{$product->s_weight}} {{$product->Sunit->name}}</div>
-          @else
-            <div class="product-price">From AED
-              {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }}
-              {{$product->unit->name}}
-            </div>
-          @endif
-          <button class="add-cart-btn" onclick="addToCart(${p.id})">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
-        </div>
+          <div class="product-card" data-id="{{ $product->id }}" data-title="{{ strtolower($product->product_name) }}"
+            data-type="{{ strtolower($product->category->name) }}"
+            data-price="{{ $product->variant_type == 'simple' ? $product->s_price : $product->Productvariants->min('price') }}"
+            data-weight="{{ $product->variant_type == 'simple'
+        ? $product->s_weight . ' ' . $product->Sunit->name
+        : ($product->Productvariants->min('weight') . ' ' . $product->unit->name)
+                            }}" data-image="{{ asset('images/product_images/' . $product->featured_image) }}">
+
+            <img src="{{ asset('images/product_images/' . $product->featured_image) }}" alt="{{ $product->product_name }}"
+              class="product-image" />
+
+            <h3 class="product-title">
+              <a href="{{ route('single.product', $product->id) }}">
+                {{ $product->product_name }}
+              </a>
+            </h3>
+
+            <div class="product-type">{{ ucfirst($product->category->name) }}</div>
+
+            @if($product->variant_type == 'simple')
+              <div class="product-price">
+                AED {{ $product->s_price }}/{{ $product->s_weight }} {{ $product->Sunit->name }}
+              </div>
+            @else
+              <div class="product-price">
+                From AED {{ $product->Productvariants->min('price') }}/{{ $product->Productvariants->min('weight') }}
+                {{ $product->unit->name }}
+              </div>
+            @endif
+
+            <input type="hidden" class="product-qty" value="1">
+
+            <button class="add-cart-btn" onclick="addToCart({{ $product->id }})">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+
+          </div>
       @endforeach
+
 
 
   </section>
@@ -1529,30 +1548,33 @@
 
 
   <script>
-
     function addToCart(id) {
+
+      let cart = JSON.parse(localStorage.getItem("cartData") || "[]");
+
       const card = document.querySelector(`[data-id="${id}"]`);
 
-      const item = {
-        id,
-        title: card.querySelector(".product-title").textContent,
-        price: Number(card.querySelector(".product-price").textContent.replace("AED", "")),
-        weight: card.querySelector(".product-weight").value,
-        quantity: Number(card.querySelector("input").value),
-        image: card.querySelector(".product-image").src
-      };
+      const title = card.querySelector(".product-title").innerText;
+      const price = Number(card.querySelector(".product-price").innerText.match(/\d+/)[0]);
 
-      let existing = cart.find(c => c.id === item.id && c.weight === item.weight);
+      const image = card.querySelector(".product-image").src;
+      const weight = card.dataset.weight || "";
+      const quantity = 1;
+
+      let existing = cart.find(i => i.id == id && i.weight == weight);
 
       if (existing) {
-        existing.quantity += item.quantity;
+        existing.quantity += 1;
       } else {
-        cart.push(item);
+        cart.push({ id, title, price, quantity, weight, image });
       }
 
-      saveCart();
-      renderCart();
+      localStorage.setItem("cartData", JSON.stringify(cart));
+
+      const totalQty = cart.reduce((sum, p) => sum + p.quantity, 0);
+      document.getElementById("cartBadge").innerText = totalQty;
     }
+
 
     const uaeData = {
       "Abu Dhabi": [

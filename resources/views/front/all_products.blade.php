@@ -1048,138 +1048,174 @@
   </div>
 
   <script>
-    // Header scroll effect
-    window.addEventListener('scroll', function () {
-      const header = document.getElementById('mainHeader');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+    /*
+      Universal "Add to Cart" script
+      - Saves cart to localStorage under key "cartData"
+      - Updates header badge #cartBadge
+      - Works with product cards structured like:
+          <div class="product-card">
+            <img class="product-image" ...>
+            <div class="product-title">...</div>
+            <div class="product-price">AED 50</div>          OR "From AED 60"
+            <select class="product-weight">...</select>      (optional)
+            <input type="number" class="product-qty" value="1"> (optional)
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+      If your classes differ, change the selectors inside addToCartFromButton()
+    */
+
+    (function () {
+      const STORAGE_KEY = 'cartData';
+
+      // Load cart from localStorage or empty array
+      function loadCart() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          console.error('Failed to parse cartData', e);
+          return [];
+        }
       }
-    });
 
-    // Update quantity function
-    function updateQuantity(btn, change) {
-      const input = btn.parentElement.querySelector('input[type=number]');
-      let current = parseInt(input.value);
-      current += change;
-      if (current < 1) current = 1;
-      input.value = current;
-    }
+      // Save cart to localStorage
+      function saveCart(cart) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      }
 
-    // Filter products by search
-    function filterProducts() {
-      const input = document.getElementById('searchInput').value.trim().toLowerCase();
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach((card) => {
-        const title = card.querySelector('.product-title').textContent.toLowerCase();
-        card.style.display = title.includes(input) ? 'flex' : 'none';
-      });
-    }
+      // Re-render the header badge
+      function renderCartBadge() {
+        const badge = document.getElementById('cartBadge');
+        if (!badge) return;
+        const cart = loadCart();
+        const totalQty = cart.reduce((s, it) => s + (it.quantity || 0), 0);
+        badge.textContent = totalQty;
+      }
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+      // Utility to get number from price text "AED 50", "From AED 60/250 gm", etc.
+      function parsePrice(text) {
+        if (!text) return 0;
+        // find first number (integer or decimal)
+        const m = text.replace(',', '').match(/(\d+(\.\d+)?)/);
+        return m ? parseFloat(m[0]) : 0;
+      }
+
+      // Called when an Add to Cart button is clicked — finds nearest product-card and extracts data
+      function addToCartFromButton(btn) {
+        // Find nearest product card - tries a few fallbacks
+        const card = btn.closest('.product-card') || btn.closest('[data-product-id]') || btn.parentElement;
+        if (!card) {
+          console.warn('Product card not found for add-to-cart button');
+          return;
+        }
+
+        // Extract product info. Adjust these selectors if your markup differs.
+        const id = card.dataset.id || card.getAttribute('data-id') || card.getAttribute('data-product-id') || parseInt(card.querySelector('.product-id')?.textContent || '') || null;
+        const titleEl = card.querySelector('.product-title') || card.querySelector('h3, h2, .title');
+        const priceEl = card.querySelector('.product-price');
+        const imgEl = card.querySelector('.product-image img') || card.querySelector('.product-image') || card.querySelector('img');
+        const weightEl = card.querySelector('.product-weight') || card.querySelector('select.product-weight');
+        const qtyEl = card.querySelector('input[type="number"], input.product-qty');
+
+        const title = titleEl ? titleEl.textContent.trim() : (card.getAttribute('data-title') || 'Product');
+        const price = priceEl ? parsePrice(priceEl.textContent) : parsePrice(card.getAttribute('data-price') || '');
+        const image = imgEl ? (imgEl.src || imgEl.getAttribute('src')) : '';
+        const weight = weightEl ? (weightEl.value || weightEl.options?.[weightEl.selectedIndex]?.text || '') : (card.getAttribute('data-weight') || '');
+        const quantity = qtyEl ? Math.max(1, parseInt(qtyEl.value || 1)) : 1;
+
+        // If id is still null, use a fallback unique id (not recommended long-term)
+        const productId = id !== null && id !== '' ? (typeof id === 'string' && id.match(/^\d+$/) ? parseInt(id) : id) : (title + '::' + weight);
+
+        // Build product object
+        const product = {
+          id: productId,
+          title,
+          price,
+          weight,
+          quantity,
+          image
+        };
+
+        // Load cart and update
+        const cart = loadCart();
+
+        // Try to find existing item with same id and weight
+        const existing = cart.find(i => String(i.id) === String(product.id) && String(i.weight) === String(product.weight));
+
+        if (existing) {
+          existing.quantity = (existing.quantity || 0) + product.quantity;
+        } else {
+          cart.push(product);
+        }
+
+        saveCart(cart);
+        renderCartBadge();
+
+        // Optional: flash UI feedback on button
+        btn.classList.add('added-to-cart');
+        setTimeout(() => btn.classList.remove('added-to-cart'), 900);
+
+        console.log('Cart updated', cart);
+      }
+
+      // Attach click listeners to all add-to-cart buttons; also observe DOM for newly added cards
+      function attachAddToCartHandlers(root = document) {
+        // Buttons commonly use .add-cart-btn, .add-to-cart, or .add-cart
+        const selectors = ['.add-cart-btn', '.add-to-cart', 'button[data-action="add-to-cart"]', '.btn-add-cart'];
+        const buttons = root.querySelectorAll(selectors.join(','));
+        buttons.forEach(btn => {
+          // avoid re-binding
+          if (btn.__cartBound) return;
+          btn.__cartBound = true;
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            addToCartFromButton(btn);
           });
+        });
+      }
+
+      // Observe DOM so dynamically loaded product lists also get handlers
+      const observer = new MutationObserver((mutationsList) => {
+        for (const m of mutationsList) {
+          if (m.addedNodes && m.addedNodes.length) {
+            m.addedNodes.forEach(node => {
+              if (node.nodeType === 1) {
+                // if product grid added
+                if (node.matches && node.matches('.products-grid, .product-card, .product-list')) {
+                  attachAddToCartHandlers(node);
+                } else {
+                  // check inside node for buttons
+                  attachAddToCartHandlers(node);
+                }
+              }
+            });
+          }
         }
       });
-    });
 
-    // document.getElementById('filterForm').addEventListener('submit', function(e) {
-    //     e.preventDefault();
-    //     let formData = new FormData(this);
+      // Initialize on DOM ready
+      document.addEventListener('DOMContentLoaded', () => {
+        renderCartBadge();
+        attachAddToCartHandlers(document);
 
-    //     fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
-    //         headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         document.getElementById('product-list').innerHTML = data.html;
-    //     });
-    // });
-
-
-    const filterForm = document.getElementById('filterForm');
-    const productList = document.getElementById('product-list');
-
-    // Apply filters
-    filterForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      fetchProducts(new FormData(this));
-    });
-
-    // Reset filters
-    document.querySelector('.reset-btn').addEventListener('click', function (e) {
-      e.preventDefault(); // prevent full page reload
-
-      filterForm.reset(); // clear all inputs
-      document.querySelectorAll('.animal-checkbox').forEach(cb => {
-        cb.checked = false;
+        // Watch the whole document for new product cards loaded dynamically
+        observer.observe(document.body, { childList: true, subtree: true });
       });
 
-      // ✅ Remove active/selected CSS state from all labels or images
-      document.querySelectorAll('.animal-label, .animal-image').forEach(el => {
-        el.classList.remove('active', 'selected', 'checked', 'highlight');
-      });
-
-      // Fetch products again with no filters
-      fetch("{{ route('filter.products') }}", {
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      })
-        .then(res => res.json())
-        .then(data => {
-          productList.innerHTML = data.html;
-        });
-    });
-
-    // Common fetch function
-    function fetchProducts(formData) {
-      fetch("{{ route('filter.products') }}?" + new URLSearchParams(formData), {
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      })
-        .then(res => res.json())
-        .then(data => {
-          productList.innerHTML = data.html;
-        });
-    }
-
-    // Auto-submit on change
-    document.querySelectorAll('#filterForm input').forEach(input => {
-      input.addEventListener('change', () => {
-        filterForm.dispatchEvent(new Event('submit'));
-      });
-    });
-
-    // Handle animal filter changes
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.animal-checkbox').forEach(cb => {
-        cb.addEventListener('change', function (e) {
-          e.target.parentElement.classList.toggle('selected', e.target.checked);
-          applyFilters();
-        });
-      });
-    });
-
-    // Apply filters function (animal part only - assumes search and other filters are handled elsewhere)
-    function applyFilters() {
-      const checkedAnimals = Array.from(document.querySelectorAll('.animal-checkbox:checked')).map(cb => cb.value);
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        const animal = card.dataset.animal || '';
-        const matchesAnimal = checkedAnimals.length === 0 || checkedAnimals.includes(animal);
-        // Integrate with full filter logic here if needed
-        card.style.display = matchesAnimal ? 'flex' : 'none';
-      });
-    }
-
-
+      // expose functions to window for quick debugging if needed
+      window._cartUtils = { loadCart, saveCart, renderCartBadge, addToCartFromButton };
+    })();
   </script>
+
+  <style>
+    /* tiny feedback style - optional and won't break your design */
+    .added-to-cart {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      transition: transform .12s ease;
+    }
+  </style>
+
 
 </body>
 

@@ -900,9 +900,12 @@
       </div>
 
       <div class="action-buttons">
-        <button class="add-cart-btn" onclick="addToCart(${p.id})">
+        <button class="add-to-cart-btn" onclick="addToCartSingle({{ $product->id }})">
           <i class="fas fa-cart-plus"></i> Add to Cart
         </button>
+
+
+
         <button class="buy-now-btn">
           <i class="fas fa-bolt"></i> Buy Now
         </button>
@@ -1124,29 +1127,52 @@
         this.style.color = '';
       }
     });
-    function addToCart(id) {
-      const card = document.querySelector(`[data-id="${id}"]`);
+    function addToCartSingle() {
 
-      const item = {
-        id,
-        title: card.querySelector(".product-title").textContent,
-        price: Number(card.querySelector(".product-price").textContent.replace("AED", "")),
-        weight: card.querySelector(".product-weight").value,
-        quantity: Number(card.querySelector("input").value),
-        image: card.querySelector(".product-image").src
-      };
+      // Read correct cart key
+      let cart = JSON.parse(localStorage.getItem("cartData") || "[]");
 
-      let existing = cart.find(c => c.id === item.id && c.weight === item.weight);
+      // Product details
+      const id = {{ $product->id }};
+      const title = document.querySelector(".product-name").innerText.trim();
+      const price = Number(document.querySelector(".product-price").innerText.replace("AED", "").trim());
+      const quantity = Number(document.querySelector(".quantity-input").value);
+      const image = document.getElementById("mainImage").src;
+
+      const weightSelect = document.getElementById("weight-select");
+      const weight = (weightSelect.value === "Choose an option") ? "" : weightSelect.value;
+
+      // Create item
+      const item = { id, title, price, quantity, weight, image };
+
+      // check existing item
+      let existing = cart.find(p => p.id === id && p.weight === weight);
 
       if (existing) {
-        existing.quantity += item.quantity;
+        existing.quantity += quantity;
       } else {
         cart.push(item);
       }
 
-      saveCart();
-      renderCart();
+      // Save
+      localStorage.setItem("cartData", JSON.stringify(cart));
+
+      // Update badge
+      const totalQty = cart.reduce((sum, p) => sum + p.quantity, 0);
+      document.getElementById("cartBadge").innerText = totalQty;
+
+      alert("Product added to cart!");
     }
+
+    // 🔥 FIX: This function ENSURES badge always matches localStorage
+    function updateCartBadge() {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const totalQty = cart.reduce((sum, p) => sum + p.quantity, 0);
+      document.getElementById("cartBadge").innerText = totalQty;
+    }
+
+    // Run on page load
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
   </script>
 </body>
 
